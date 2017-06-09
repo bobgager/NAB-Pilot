@@ -1,0 +1,65 @@
+<!-- We don't need a full layout in this file because this page will be parsed with Ajax. -->
+
+<!-- Top Navbar-->
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="back link">
+                <i class="icon icon-back"></i>
+                <span>Back</span>
+            </a>
+        </div>
+        <div class="center sliding branded-text">Custom Gateway</div>
+    </div>
+</div>
+<div class="pages">
+    <div data-page="customGateway" class="page">
+        <div class="page-content center-text">
+
+
+            <div class="content-block-title">Custom Gateway Details</div>
+            <form id="customGatewayForm" class="list-block inset store-data">
+                <ul>
+                    <!-- Text inputs -->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">URL:</div>
+                                <div class="item-input">
+                                    <input id="customGatewayURL" name="customGatewayURL" type="text" placeholder="Custom Gateway URL">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <!-- Select -->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">Player Type:</div>
+                                <div class="item-input">
+                                    <select id="customGatewayPlayerType" name="customGatewayPlayerType">
+                                        <option>streaming-media</option>
+                                        <option>inappbrowser</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </form>
+
+            <div class="list-block inset">
+                <ul>
+                    <li>
+                        <a id="connectCustomGTWYBTN" href="#" class="item-link list-button">Connect</a>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+</div>
