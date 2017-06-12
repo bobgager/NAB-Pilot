@@ -6,10 +6,10 @@ var globals = {
 
     inDevelopment: true,
 
-    version: 0.0010,
-    presentableVersion: "0.0.10",
+    version: 0.0100,
+    presentableVersion: "0.1.0",
 
-    codeDate: '3/31/2017',
+    codeDate: '6/11/2017',
 
     isBrowser: true,
 
