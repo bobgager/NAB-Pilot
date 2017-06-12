@@ -5,7 +5,7 @@
 myApp.onPageInit('gateway', function (page) {
 
     //Events to watch
-    $$(document).on('click', '.activeGateway', gatewayPage.gatewayClicked);
+    $$(document).on('click', '.gateway', gatewayPage.gatewayClicked);
     $$(document).on('click', '#clearGatewayBTN', gatewayPage.clearGatewayClicked);
 
     $$(document).on('refresh','.pull-to-refresh-content',gatewayPage.refreshPage)
@@ -17,7 +17,7 @@ myApp.onPageInit('gateway', function (page) {
 myApp.onPageBeforeRemove('gateway', function (page) {
 
     //clean up event watchers
-    $$(document).off('click', '.activeGateway', gatewayPage.gatewayClicked);
+    $$(document).off('click', '.gateway', gatewayPage.gatewayClicked);
     $$(document).off('click', '#clearGatewayBTN', gatewayPage.clearGatewayClicked);
     $$(document).off('click', '#customGatewayBTN', gatewayPage.customGatewayClicked);
 
@@ -57,25 +57,6 @@ var gatewayPage = {
 
         gatewayPage.discoverGateways();
 
-/*        myApp.modal({
-            title:  'Select Gateway Source',
-            text: 'During development you can either use the Hard Coded Gateways, or try ZeroConf if you are on a network with an active Gateway',
-            buttons: [
-                {
-                    text: 'Hard Coded',
-                    onClick: function() {
-                        //Load the gateways
-                        gatewayPage.generateGateways();
-                    }
-                },
-                {
-                    text: 'ZeroConf',
-                    onClick: function() {
-                        gatewayPage.discoverGateways();
-                    }
-                }
-            ]
-        })*/
     },
 
 
@@ -224,10 +205,10 @@ var gatewayPage = {
             gatewayListHTML +=      '<li>';
 
             if(gateway.status === 'Active'){
-                gatewayListHTML +=          '<a href="#" class="activeGateway item-link item-content" data-gatewayName="'+ gateway.name +'"  >';
+                gatewayListHTML +=          '<a href="#" class="gateway activeGateway item-link item-content" data-gatewayName="'+ gateway.name +'"  >';
             }
             else{
-                gatewayListHTML +=          '<a href="#" class="item-content">';
+                gatewayListHTML +=          '<a href="#" class="gateway item-content" data-gatewayName="'+ gateway.name +'"  >';
             }
 
             switch(gateway.status) {
@@ -296,7 +277,6 @@ var gatewayPage = {
 
         //see if they clicked on the Custom Gateway
         if($$(self).data("gatewayName") === globals.customTestGateway.name){
-            //navigate to the Player page
             mainView.router.load({url: 'pages/customGateway.html'});
             return;
         }
