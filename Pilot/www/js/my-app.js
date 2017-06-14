@@ -27,8 +27,15 @@ myApp.hideToolbar($$('#gatewayToolbar'));
 //get any saved custom gateway information
 var customGatewayInfo = myApp.formGetData('customGatewayForm');
 if (customGatewayInfo){
-    globals.customTestGateway.player = customGatewayInfo.customGatewayPlayerType;
-    globals.customTestGateway.url = customGatewayInfo.customGatewayURL;
+    globals.customTestGateway.baseURL= customGatewayInfo.customGatewayBaseURL;
+    globals.customTestGateway.url= customGatewayInfo.customGatewayURL;
+    globals.customTestGateway.player= customGatewayInfo.customGatewayPlayerType;
+    globals.customTestGateway.ipAddress= customGatewayInfo.customGatewayIpAddress;
+    globals.customTestGateway.isPC= customGatewayInfo.customGatewayIsPC;
+    globals.customTestGateway.isFourK= customGatewayInfo.customGatewayIsFourK;
+    globals.customTestGateway.wsURL= customGatewayInfo.customGatewayWsURL;
+    globals.customTestGateway.deviceID= customGatewayInfo.customGatewayDeviceID;
+    globals.customTestGateway.portNum= customGatewayInfo.customGatewayPortNum;
 }
 
 

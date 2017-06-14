@@ -3,7 +3,6 @@
  */
 
 myApp.onPageInit('customGateway', function (page) {
-    //myApp.alert('Here comes Settings page.');
 
     //Events to watch
     $$(document).on('click', '#connectCustomGTWYBTN', customGatewayPage.connect);
@@ -17,17 +16,23 @@ myApp.onPageBeforeRemove('customGateway', function (page) {
 
 });
 
+myApp.onPageBeforeAnimation('customGateway', function (page) {
+
+    //set the values of the switches as the automatic form data storage doesn't seem to work for switches
+    if(globals.customTestGateway.isPC){
+        $$('#isPCSwitch').prop('checked', globals.customTestGateway.isPC);
+        $$('#isFourKSwitch').prop('checked', globals.customTestGateway.isFourK);
+    }
+
+
+});
+
 
 
 var customGatewayPage = {
 
     //******************************************************************************************************************
     connect: function () {
-
-        if ($$('#customGatewayURL').val().length === 0){
-            myApp.alert("Please enter a Gateway URL before trying to connect.", 'Attention!');
-            return;
-        }
 
         //update the global customTestGateway info
         globals.customTestGateway.baseURL = $$('#customGatewayBaseURL').val();
@@ -68,7 +73,8 @@ var customGatewayPage = {
             'customGatewayIsFourK': globals.customTestGateway.isFourK,
             'customGatewayWsURL': $$('#customGatewayWsURL').val(),
             'customGatewayDeviceID': $$('#customGatewayDeviceID').val(),
-            'customGatewayPortNum': $$('#customGatewayPortNum').val()
+            'customGatewayPortNum': $$('#customGatewayPortNum').val(),
+            'customGatewayURL': globals.customTestGateway.url
         });
 
         //set the selectedGateway global with the selected gateway

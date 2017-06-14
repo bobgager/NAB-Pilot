@@ -20,7 +20,7 @@ myApp.onPageBeforeAnimation('player', function (page) {
 
     if (globals.selectedGateway){
         //a gateway was previously selected on this device
-        $$('#selectedGatewayMessage').html(globals.selectedGateway.name + '<br>' + globals.selectedGateway.url + '<br>' + globals.selectedGateway.player);
+        $$('#selectedGatewayMessage').html(globals.selectedGateway.name + '<br><br>' + globals.selectedGateway.url + '<br><br>' + globals.selectedGateway.player);
         $$('#selectedGatewayHeader').html('Selected Gateway');
         $$('#selectedGatewayPlayBTN').show();
     }
