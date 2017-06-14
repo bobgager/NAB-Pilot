@@ -30,15 +30,45 @@ var customGatewayPage = {
         }
 
         //update the global customTestGateway info
-        globals.customTestGateway.url = $$('#customGatewayURL').val();
+        globals.customTestGateway.baseURL = $$('#customGatewayBaseURL').val();
         globals.customTestGateway.player = $$('#customGatewayPlayerType').val();
+        globals.customTestGateway.ipAddress = $$('#customGatewayIpAddress').val();
+        globals.customTestGateway.wsURL = $$('#customGatewayWsURL').val();
+        globals.customTestGateway.deviceID = $$('#customGatewayDeviceID').val();
+        globals.customTestGateway.portNum = $$('#customGatewayPortNum').val();
 
+        if ($$('#isPCSwitch').is(':checked')) {
+            globals.customTestGateway.isPC = true;
+        } else {
+            globals.customTestGateway.isPC = false;
+        }
 
+        if ($$('#isFourKSwitch').is(':checked')) {
+            globals.customTestGateway.isFourK = true;
+        } else {
+            globals.customTestGateway.isFourK = false;
+        }
+
+        //concatenate url and update global customTestGateway url
+        //format: <IP address of gateway>:<port#>/BaseURL?deviceID=<entry>&wsURL=<entry>&isPC=<entry>&isFourK=<entry>
+        globals.customTestGateway.url = globals.customTestGateway.ipAddress +
+                                        ":" + globals.customTestGateway.portNum +
+                                        "/" + globals.customTestGateway.baseURL +
+                                        "?deviceID=" + globals.customTestGateway.deviceID +
+                                        "&wsURL=" + globals.customTestGateway.wsURL +
+                                        "&isPC=" + globals.customTestGateway.isPC +
+                                        "&isFourK=" + globals.customTestGateway.isFourK;
 
         //store the form data
         var storedData = myApp.formStoreData('customGatewayForm', {
-            'customGatewayURL': $$('#customGatewayURL').val(),
-            'customGatewayPlayerType': $$('#customGatewayPlayerType').val()
+            'customGatewayBaseURL': $$('#customGatewayBaseURL').val(),
+            'customGatewayPlayerType': $$('#customGatewayPlayerType').val(),
+            'customGatewayIpAddress': $$('#customGatewayIpAddress').val(),
+            'customGatewayIsPC': globals.customTestGateway.isPC,
+            'customGatewayIsFourK': globals.customTestGateway.isFourK,
+            'customGatewayWsURL': $$('#customGatewayWsURL').val(),
+            'customGatewayDeviceID': $$('#customGatewayDeviceID').val(),
+            'customGatewayPortNum': $$('#customGatewayPortNum').val()
         });
 
         //set the selectedGateway global with the selected gateway

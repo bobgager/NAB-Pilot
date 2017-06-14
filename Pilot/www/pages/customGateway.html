@@ -20,13 +20,13 @@
             <div class="content-block-title">Custom Gateway Details</div>
             <form id="customGatewayForm" class="list-block inset store-data">
                 <ul>
-                    <!-- Text inputs -->
+                    <!-- Text input -->
                     <li>
                         <div class="item-content">
                             <div class="item-inner">
                                 <div class="item-title label">URL:</div>
                                 <div class="item-input">
-                                    <input id="customGatewayURL" name="customGatewayURL" type="text" placeholder="Custom Gateway URL">
+                                    <input id="customGatewayBaseURL" name="customGatewayBaseURL" type="text" placeholder="Custom Gateway URL">
                                 </div>
                             </div>
                         </div>
@@ -43,6 +43,90 @@
                                         <option>streaming-media</option>
                                         <option>inappbrowser</option>
                                     </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <!-- Text input -->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">IP Address:</div>
+                                <div class="item-input">
+                                    <input id="customGatewayIpAddress" name="customGatewayIpAddress" type="text" placeholder="Custom Gateway IP Address">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <!-- Switch slider -->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">isPC</div>
+                                <div class="item-input">
+                                    <label class="label-switch">
+                                        <input id="isPCSwitch" type="checkbox">
+                                        <div class="checkbox"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <!-- Switch slider -->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">isFourK</div>
+                                <div class="item-input">
+                                    <label class="label-switch">
+                                        <input id="isFourKSwitch" type="checkbox">
+                                        <div class="checkbox"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <!-- Text input -->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">Websocket URL:</div>
+                                <div class="item-input">
+                                    <input id="customGatewayWsURL" name="customGatewayWsURL" type="text" placeholder="Custom Gateway Websocket URL">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <!-- Text input -->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">Device ID:</div>
+                                <div class="item-input">
+                                    <input id="customGatewayDeviceID" name="customGatewayDeviceID" type="text" placeholder="Custom Gateway Device ID">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <!-- Numerical text input -->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">Port:</div>
+                                <div class="item-input">
+                                    <input id="customGatewayPortNum" name="customGatewayPortNum" type="number" placeholder="Custom Gateway Port">
                                 </div>
                             </div>
                         </div>

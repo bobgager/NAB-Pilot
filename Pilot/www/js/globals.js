@@ -21,8 +21,15 @@ var globals = {
 
     customTestGateway: {
         name: 'Customizable Test Gateway',
-        url: 'http://cobaltfire.com/demo/pilot/bunny.html',
+        baseURL: 'http://cobaltfire.com/demo/pilot/bunny.html',
+        url: null,
         player: 'inappbrowser',
+        ipAddress: null,
+        isPC: null,
+        isFourK: null,
+        wsURL: null,
+        deviceID: null,
+        portNum: null,
         status: 'Active'
     }
 
