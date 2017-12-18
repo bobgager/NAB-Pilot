@@ -40,28 +40,37 @@ if (customGatewayInfo){
 
 
 
-//after some fake initialization delay, load the proper page
-//depending on a gateway being selected or not
-
 globals.selectedGateway = myApp.formGetData('selectedGateway');
+
 setTimeout(function(){
 
     //check to see if a Gateway has previously been selected
-    if (globals.selectedGateway){
-        mainView.router.load({url: 'pages/player.html', animatePages: false});
+    /*    if (globals.selectedGateway){
+            mainView.router.load({url: 'pages/player.html', animatePages: false});
 
-    }
-    else {
-        //a gateway has never been selected, or was previously cleared.
-        mainView.router.load({url: 'pages/gateway.html', animatePages: false});
+        }
+        else {
+            //a gateway has never been selected, or was previously cleared.
+            mainView.router.load({url: 'pages/gateway.html', animatePages: false});
 
-    }
+        }*/
+
+    //hide the initializing div
+    $$('#initializingCard').hide();
+
+
 }, 1000);
 
 
 //**********************************************************************************************************************
 //global functions
 //**********************************************************************************************************************
+
+function resetToolbar() {
+    $$('#tb_keyboard').removeClass('disabled');
+    $$('#tb_player').removeClass('disabled');
+    $$('#tb_remote').removeClass('disabled');
+}
 
 function setSkin() {
     //add in the CSS
@@ -77,3 +86,39 @@ function setSkin() {
 }
 
 //**********************************************************************************************************************
+// Index page functions
+//**********************************************************************************************************************
+
+myApp.onPageInit('index', function (page) {
+
+
+});
+
+myApp.onPageBeforeRemove('index', function (page) {
+
+});
+
+myApp.onPageBeforeAnimation('index', function (page) {
+
+    $$('#initializingCard').hide();
+
+});
+
+myApp.onPageAfterAnimation('index', function (page) {
+
+
+
+});
+
+
+
+var indexPage = {
+
+
+
+
+
+    //******************************************************************************************************************
+    //******************************************************************************************************************
+
+};

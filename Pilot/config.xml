@@ -2,7 +2,7 @@
 <widget id="com.cobaltfire.pilot" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>NAB Pilot</name>
     <description>
-        Companion App for Azita's project
+        Companion App for Pilot Gateway
     </description>
     <author email="support@cobaltfire.com" href="http://cobaltfire.com">
         Cobalt Fire Software LLC
@@ -33,7 +33,9 @@
     <plugin name="cordova-plugin-statusbar" spec="1.0.1" />
     <plugin name="cordova-plugin-streaming-media" spec="1.0.2" />
     <plugin name="cordova-plugin-whitelist" spec="1.2.2" />
-    <plugin name="cordova-plugin-zeroconf" spec="1.2.1" />
+
+<!--    <plugin name="cordova-plugin-zeroconf" spec="1.2.1" />-->
+
     <plugin name="cordova-plugin-networkinterface" spec="1.0.8" />
     <plugin name="cordova-plugin-device" spec="1.1.5" />
 

@@ -55,12 +55,72 @@ var gatewayPage = {
 
         myApp.pullToRefreshDone();
 
-        gatewayPage.generateGateways();
+        gatewayPage.discoverGateways();
+
+    },
+
+
+    //******************************************************************************************************************
+    discoverGateways: function () {
+        $$('#ZeroConfMessages').html('Discovering Gateways');
+
+        //clear the global list of gateways
+        globals.gatewayList = [];
+
+        //add in the manually customizable Gateway
+        globals.gatewayList.push(globals.customTestGateway);
+
+        gatewayPage.renderGatewayList();
+
+        //include this return for local testing
+        //return;
+
+        var zeroconf = cordova.plugins.zeroconf;
+
+        zeroconf.watch('_http._tcp.', 'local.', function(result) {
+            var action = result.action;
+            var service = result.service;
+            /* service : {
+             'domain' : 'local.',
+             'type' : '_http._tcp.',
+             'name': 'Becvert\'s iPad',
+             'port' : 80,
+             'hostname' : 'ipad-of-becvert.local',
+             'ipv4Addresses' : [ '192.168.1.125' ],
+             'ipv6Addresses' : [ '2001:0:5ef5:79fb:10cb:1dbf:3f57:feb0' ],
+             'txtRecord' : {
+             'foo' : 'bar'
+             }
+             } */
+            if (action == 'added') {
+                console.log('service added', service);
+                $$('#ZeroConfMessages').html($$('#ZeroConfMessages').html() + '<br>service added: ' + service.name + ' ipv4: ' + service.ipv4Addresses + ' port: ' + service.port)
+
+                //TODO: need to see if this Gateway is already in the list before adding it
+
+
+                var newGateway = {};
+                newGateway.name = service.name;
+                newGateway.hostname = service.hostname;
+                newGateway.url = 'http://'+ service.ipv4Addresses + ':' + service.port;
+                newGateway.player = 'inappbrowser';
+                newGateway.status = 'Active';
+                globals.gatewayList.push(newGateway);
+                gatewayPage.renderGatewayList();
+
+            } else {
+                console.log('service removed', service);
+                $$('#ZeroConfMessages').html($$('#ZeroConfMessages').html() + '<br>service removed: ' + service)
+            }
+        });
 
     },
 
     //******************************************************************************************************************
     generateGateways: function () {
+
+        //TODO Remove this function as we don't need the hard coded gateways anymore
+
 
         myApp.showPreloader('Generating Hardcoded Gateways')
         setTimeout(function () {
@@ -73,7 +133,7 @@ var gatewayPage = {
 
         //fill it full of some hard coded gateways
 
-        /*var gateway0 = {};
+        var gateway0 = {};
         gateway0.name = 'Family Room';
         gateway0.url = 'http://192.168.1.2:88/MEDIA/livestream';
         gateway0.player = 'inappbrowser';
@@ -100,7 +160,7 @@ var gatewayPage = {
         gateway3.player = 'inappbrowser';
         gateway3.status = 'Active';
         globals.gatewayList.push(gateway3);
-*/
+
         var gateway4 = {};
         gateway4.name = '.mp4 Video Test Gateway';
         gateway4.url = 'http://cobaltfire.com/demo/pilot/PilotTestVideo.mp4';

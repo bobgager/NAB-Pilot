@@ -11,12 +11,16 @@ myApp.onPageInit('player', function (page) {
 
 myApp.onPageBeforeRemove('player', function (page) {
 
+    $$('#tb_player').removeClass('disabled');
+
     //clean up event watchers
     $$(document).off('click','#playBtn', playerPage.playContent);
 
 });
 
 myApp.onPageBeforeAnimation('player', function (page) {
+
+    $$('#tb_player').addClass('disabled');
 
     if (globals.selectedGateway){
         //a gateway was previously selected on this device
