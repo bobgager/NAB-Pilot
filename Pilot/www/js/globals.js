@@ -6,8 +6,8 @@ var globals = {
 
     inDevelopment: true,
 
-    version: 0.0101,
-    presentableVersion: "0.1.01",
+    version: 0.0201,
+    presentableVersion: "0.2.01",
 
     codeDate: '6/13/2017',
 
