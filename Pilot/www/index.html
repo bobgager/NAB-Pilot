@@ -34,6 +34,8 @@
 
     <link rel="stylesheet" href="css/framework7-icons.css">
 
+    <link href="css/keyboard-dark.css" rel="stylesheet">
+
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -54,6 +56,7 @@
     <div class="views ">
         <!-- Your main view, should have "view-main" class -->
         <div class="view view-main">
+
             <!-- Top Navbar-->
             <div class="navbar">
                 <div class="navbar-inner">
@@ -68,6 +71,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
             <div class="pages navbar-through toolbar-through">
                 <!-- Page, "data-page" contains page name -->
@@ -91,6 +95,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Bottom Toolbar-->
             <div class="toolbar">
                 <div class="toolbar-inner">
@@ -100,7 +105,8 @@
 
                     <a id="tb_player" href="pages/player.html" class="link" onclick="resetToolbar()" ><i class="far fa-play-circle"></i>&nbsp;&nbsp;Player</a>
 
-                    <a id="tb_keyboard" href="pages/keyboard.html" class="link" onclick="resetToolbar()" ><i class="far fa-keyboard"></i>&nbsp;&nbsp;Keyboard</a>
+                    <a href="#" data-popup=".keyboardPopup" class="open-popup"><i class="far fa-keyboard"></i>&nbsp;&nbsp;Keyboard </a>
+
 
                     <a id="tb_remote" href="pages/remote_control.html" class="link" onclick="resetToolbar()"><i class="fas fa-th"></i>&nbsp;&nbsp;Remote</a>
 
@@ -126,8 +132,197 @@
             </div>
 
 
+
+
+
         </div>
+
+
+
+
     </div>
+
+
+
+
+    <!-- Keyboard Popup -->
+            <!-- Keyboard wrapper (QWERTY layout);  -->
+            <div class="popup keyboardPopup tablet-fullscreen ui-keyboard ui-widget-content ui-widget ui-corner-all ui-helper-clearfix ui-keyboard-has-focus" role="textbox" id="keyboard_keyboard">
+
+                <!-- ** normal/default key set ** -->
+                <div name="normal" class="ui-keyboard-keyset ui-keyboard-keyset-normal" style="display: block;">
+                    <!-- first row -->
+                    <button class="ui-keyboard-button ui-keyboard-1 ui-state-default ui-corner-all" data-value="1" data-name="1" data-pos="0,1" data-action="1" data-html="<span class=&quot;ui-keyboard-text&quot;>1</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">1</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-2 ui-state-default ui-corner-all" data-value="2" data-name="2" data-pos="0,2" data-action="2" data-html="<span class=&quot;ui-keyboard-text&quot;>2</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">2</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-3 ui-state-default ui-corner-all" data-value="3" data-name="3" data-pos="0,3" data-action="3" data-html="<span class=&quot;ui-keyboard-text&quot;>3</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">3</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-4 ui-state-default ui-corner-all" data-value="4" data-name="4" data-pos="0,4" data-action="4" data-html="<span class=&quot;ui-keyboard-text&quot;>4</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">4</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-5 ui-state-default ui-corner-all" data-value="5" data-name="5" data-pos="0,5" data-action="5" data-html="<span class=&quot;ui-keyboard-text&quot;>5</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">5</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-6 ui-state-default ui-corner-all" data-value="6" data-name="6" data-pos="0,6" data-action="6" data-html="<span class=&quot;ui-keyboard-text&quot;>6</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">6</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-7 ui-state-default ui-corner-all" data-value="7" data-name="7" data-pos="0,7" data-action="7" data-html="<span class=&quot;ui-keyboard-text&quot;>7</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">7</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-8 ui-state-default ui-corner-all" data-value="8" data-name="8" data-pos="0,8" data-action="8" data-html="<span class=&quot;ui-keyboard-text&quot;>8</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">8</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-9 ui-state-default ui-corner-all" data-value="9" data-name="9" data-pos="0,9" data-action="9" data-html="<span class=&quot;ui-keyboard-text&quot;>9</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">9</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-0 ui-state-default ui-corner-all" data-value="0" data-name="0" data-pos="0,10" data-action="0" data-html="<span class=&quot;ui-keyboard-text&quot;>0</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">0</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-- ui-state-default ui-corner-all" data-value="-" data-name="-" data-pos="0,11" data-action="-" data-html="<span class=&quot;ui-keyboard-text&quot;>-</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">-</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-61 ui-state-default ui-corner-all" data-value="=" data-name="=" data-pos="0,12" data-action="=" data-html="<span class=&quot;ui-keyboard-text&quot;>=</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">=</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-bksp ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all" data-value="Bksp" data-name="bksp" data-pos="0,13" data-action="bksp" data-html="<span class=&quot;ui-keyboard-text&quot;>Bksp</span>" data-title="Backspace" title="Backspace"><span class="ui-keyboard-text">Bksp</span></button>
+                    <br class="ui-keyboard-button-endrow">
+
+                    <!-- second row -->
+                    <button class="ui-keyboard-button ui-keyboard-tab ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all" data-value="⇥ Tab" data-name="tab" data-pos="1,0" data-action="tab" data-html="<span class=&quot;ui-keyboard-text&quot;>&amp;#8677; Tab</span>" data-title="Tab" title="Tab"><span class="ui-keyboard-text">⇥ Tab</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-q ui-state-default ui-corner-all" data-value="q" data-name="q" data-pos="1,1" data-action="q" data-html="<span class=&quot;ui-keyboard-text&quot;>q</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">q</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-w ui-state-default ui-corner-all" data-value="w" data-name="w" data-pos="1,2" data-action="w" data-html="<span class=&quot;ui-keyboard-text&quot;>w</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">w</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-e ui-state-default ui-corner-all" data-value="e" data-name="e" data-pos="1,3" data-action="e" data-html="<span class=&quot;ui-keyboard-text&quot;>e</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">e</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-r ui-state-default ui-corner-all" data-value="r" data-name="r" data-pos="1,4" data-action="r" data-html="<span class=&quot;ui-keyboard-text&quot;>r</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">r</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-t ui-state-default ui-corner-all" data-value="t" data-name="t" data-pos="1,5" data-action="t" data-html="<span class=&quot;ui-keyboard-text&quot;>t</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">t</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-y ui-state-default ui-corner-all" data-value="y" data-name="y" data-pos="1,6" data-action="y" data-html="<span class=&quot;ui-keyboard-text&quot;>y</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">y</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-u ui-state-default ui-corner-all" data-value="u" data-name="u" data-pos="1,7" data-action="u" data-html="<span class=&quot;ui-keyboard-text&quot;>u</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">u</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-i ui-state-default ui-corner-all" data-value="i" data-name="i" data-pos="1,8" data-action="i" data-html="<span class=&quot;ui-keyboard-text&quot;>i</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">i</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-o ui-state-default ui-corner-all" data-value="o" data-name="o" data-pos="1,9" data-action="o" data-html="<span class=&quot;ui-keyboard-text&quot;>o</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">o</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-p ui-state-default ui-corner-all" data-value="p" data-name="p" data-pos="1,10" data-action="p" data-html="<span class=&quot;ui-keyboard-text&quot;>p</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">p</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-91 ui-state-default ui-corner-all" data-value="[" data-name="[" data-pos="1,11" data-action="[" data-html="<span class=&quot;ui-keyboard-text&quot;>[</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">[</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-93 ui-state-default ui-corner-all" data-value="]" data-name="]" data-pos="1,12" data-action="]" data-html="<span class=&quot;ui-keyboard-text&quot;>]</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">]</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-92 ui-state-default ui-corner-all" data-value="\" data-name="\" data-pos="1,13" data-action="\" data-html="<span class=&quot;ui-keyboard-text&quot;>\</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">\</span></button>
+                    <br class="ui-keyboard-button-endrow">
+
+                    <!-- third row -->
+                    <button class="ui-keyboard-button ui-keyboard-a ui-state-default ui-corner-all" data-value="a" data-name="a" data-pos="2,0" data-action="a" data-html="<span class=&quot;ui-keyboard-text&quot;>a</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">a</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-s ui-state-default ui-corner-all" data-value="s" data-name="s" data-pos="2,1" data-action="s" data-html="<span class=&quot;ui-keyboard-text&quot;>s</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">s</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-d ui-state-default ui-corner-all" data-value="d" data-name="d" data-pos="2,2" data-action="d" data-html="<span class=&quot;ui-keyboard-text&quot;>d</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">d</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-f ui-state-default ui-corner-all" data-value="f" data-name="f" data-pos="2,3" data-action="f" data-html="<span class=&quot;ui-keyboard-text&quot;>f</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">f</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-g ui-state-default ui-corner-all" data-value="g" data-name="g" data-pos="2,4" data-action="g" data-html="<span class=&quot;ui-keyboard-text&quot;>g</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">g</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-h ui-state-default ui-corner-all" data-value="h" data-name="h" data-pos="2,5" data-action="h" data-html="<span class=&quot;ui-keyboard-text&quot;>h</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">h</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-j ui-state-default ui-corner-all" data-value="j" data-name="j" data-pos="2,6" data-action="j" data-html="<span class=&quot;ui-keyboard-text&quot;>j</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">j</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-k ui-state-default ui-corner-all" data-value="k" data-name="k" data-pos="2,7" data-action="k" data-html="<span class=&quot;ui-keyboard-text&quot;>k</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">k</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-l ui-state-default ui-corner-all" data-value="l" data-name="l" data-pos="2,8" data-action="l" data-html="<span class=&quot;ui-keyboard-text&quot;>l</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">l</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-59 ui-state-default ui-corner-all" data-value=";" data-name=";" data-pos="2,9" data-action=";" data-html="<span class=&quot;ui-keyboard-text&quot;>;</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">;</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-39 ui-state-default ui-corner-all" data-value="'" data-name="'" data-pos="2,10" data-action="'" data-html="<span class=&quot;ui-keyboard-text&quot;>'</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">'</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-enter ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all ui-state-active" data-value="Enter" data-name="enter" data-pos="2,11" data-action="enter" data-html="<span class=&quot;ui-keyboard-text&quot;>Enter</span>" data-title="Enter ⏎" title="Enter ⏎"><span class="ui-keyboard-text">Enter</span></button>
+                    <br class="ui-keyboard-button-endrow">
+
+                    <!-- fourth row -->
+                    <button class="ui-keyboard-button ui-keyboard-shift ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all ui-keyboard-hasactivestate" data-value="Shift" data-name="shift" data-pos="3,0" data-action="shift" data-html="<span class=&quot;ui-keyboard-text&quot;>Shift</span>" data-title="Shift" title="Shift"><span class="ui-keyboard-text">Shift</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-z ui-state-default ui-corner-all" data-value="z" data-name="z" data-pos="3,1" data-action="z" data-html="<span class=&quot;ui-keyboard-text&quot;>z</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">z</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-x ui-state-default ui-corner-all" data-value="x" data-name="x" data-pos="3,2" data-action="x" data-html="<span class=&quot;ui-keyboard-text&quot;>x</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">x</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-c ui-state-default ui-corner-all" data-value="c" data-name="c" data-pos="3,3" data-action="c" data-html="<span class=&quot;ui-keyboard-text&quot;>c</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">c</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-v ui-state-default ui-corner-all" data-value="v" data-name="v" data-pos="3,4" data-action="v" data-html="<span class=&quot;ui-keyboard-text&quot;>v</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">v</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-b ui-state-default ui-corner-all" data-value="b" data-name="b" data-pos="3,5" data-action="b" data-html="<span class=&quot;ui-keyboard-text&quot;>b</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">b</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-n ui-state-default ui-corner-all" data-value="n" data-name="n" data-pos="3,6" data-action="n" data-html="<span class=&quot;ui-keyboard-text&quot;>n</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">n</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-m ui-state-default ui-corner-all" data-value="m" data-name="m" data-pos="3,7" data-action="m" data-html="<span class=&quot;ui-keyboard-text&quot;>m</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">m</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-44 ui-state-default ui-corner-all" data-value="," data-name="," data-pos="3,8" data-action="," data-html="<span class=&quot;ui-keyboard-text&quot;>,</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">,</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-46 ui-state-default ui-corner-all" data-value="." data-name="." data-pos="3,9" data-action="." data-html="<span class=&quot;ui-keyboard-text&quot;>.</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">.</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-47 ui-state-default ui-corner-all" data-value="/" data-name="/" data-pos="3,10" data-action="/" data-html="<span class=&quot;ui-keyboard-text&quot;>/</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">/</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-shift ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all ui-keyboard-hasactivestate" data-value="Shift" data-name="shift" data-pos="3,11" data-action="shift" data-html="<span class=&quot;ui-keyboard-text&quot;>Shift</span>" data-title="Shift" title="Shift"><span class="ui-keyboard-text">Shift</span></button>
+                    <br class="ui-keyboard-button-endrow">
+
+<!--
+                    <button class="ui-keyboard-button ui-keyboard-accept ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all ui-state-active" data-value="Accept" data-name="accept" data-pos="4,0" data-action="accept" data-html="<span class=&quot;ui-keyboard-text&quot;>Accept</span>" data-title="Accept (Shift+Enter)" title="Accept (Shift+Enter)"><span class="ui-keyboard-text">Accept</span></button>
+-->
+                    <button class="ui-keyboard-button ui-keyboard-space ui-keyboard-actionkey ui-state-default ui-corner-all" data-value="&nbsp;" data-name="space" data-pos="4,1" data-action="space" data-html="<span class=&quot;ui-keyboard-text&quot;>&amp;#160;</span>" data-title="Space" title="Space"><span class="ui-keyboard-text">&nbsp;</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-cancel ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all ui-state-active" data-value="Close" data-name="close" data-pos="4,2" data-action="close" data-html="<span class=&quot;ui-keyboard-text&quot;>Close</span>" data-title="Close (Esc)" title="Close (Esc)"><span class="ui-keyboard-text"><i class="far fa-keyboard"></i>&nbsp;&nbsp;<i class="fas fa-caret-down"></i></span></button>
+
+                    <!-- "test" button added to qwerty layout to show the changes to the
+                        "name" attribute & "ui-keyboard-test" class name -->
+<!--
+                    <button class="ui-keyboard-button ui-keyboard-test ui-keyboard-widekey ui-state-default ui-corner-all" data-value="test" data-name="test" data-pos="4,3" data-action="test" data-html="<span class=&quot;ui-keyboard-text&quot;>test</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">test</span></button>
+-->
+
+                    <!-- "xyαβξz" button added to qwerty layout to show how the "name" &
+                        "ui-keyboard-xy-945-946-958z" class names are different when not using a-z or 0-9 -->
+<!--
+                    <button class="ui-keyboard-button ui-keyboard-xy-945-946-958z ui-keyboard-widekey ui-state-default ui-corner-all" data-value="xyαβξz" data-name="xyαβξz" data-pos="4,6" data-action="xyαβξz" data-html="<span class=&quot;ui-keyboard-text&quot;>xy&amp;#945;&amp;#946;&amp;#958;z</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">xyαβξz</span></button>
+-->
+
+                    <br class="ui-keyboard-button-endrow">
+
+                </div>
+                <!--  ** end normal/default keyset ** -->
+
+                <!-- ** shift key set ** -->
+                <div name="shift" class="ui-keyboard-keyset ui-keyboard-keyset-shift" style="display: none;">
+
+                    <button class="ui-keyboard-button ui-keyboard-33 ui-state-default ui-corner-all" data-value="!" data-name="!" data-pos="0,1" data-action="!" data-html="<span class=&quot;ui-keyboard-text&quot;>!</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">!</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-64 ui-state-default ui-corner-all" data-value="@" data-name="@" data-pos="0,2" data-action="@" data-html="<span class=&quot;ui-keyboard-text&quot;>@</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">@</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-35 ui-state-default ui-corner-all" data-value="#" data-name="#" data-pos="0,3" data-action="#" data-html="<span class=&quot;ui-keyboard-text&quot;>#</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">#</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-36 ui-state-default ui-corner-all" data-value="$" data-name="$" data-pos="0,4" data-action="$" data-html="<span class=&quot;ui-keyboard-text&quot;>$</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">$</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-37 ui-state-default ui-corner-all" data-value="%" data-name="%" data-pos="0,5" data-action="%" data-html="<span class=&quot;ui-keyboard-text&quot;>%</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">%</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-94 ui-state-default ui-corner-all" data-value="^" data-name="^" data-pos="0,6" data-action="^" data-html="<span class=&quot;ui-keyboard-text&quot;>^</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">^</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-38 ui-state-default ui-corner-all" data-value="&amp;" data-name="&amp;" data-pos="0,7" data-action="&amp;" data-html="<span class=&quot;ui-keyboard-text&quot;>&amp;#38;</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">&amp;</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-42 ui-state-default ui-corner-all" data-value="*" data-name="*" data-pos="0,8" data-action="*" data-html="<span class=&quot;ui-keyboard-text&quot;>*</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">*</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-40 ui-state-default ui-corner-all" data-value="(" data-name="(" data-pos="0,9" data-action="(" data-html="<span class=&quot;ui-keyboard-text&quot;>(</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">(</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-41 ui-state-default ui-corner-all" data-value=")" data-name=")" data-pos="0,10" data-action=")" data-html="<span class=&quot;ui-keyboard-text&quot;>)</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">)</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-_ ui-state-default ui-corner-all" data-value="_" data-name="_" data-pos="0,11" data-action="_" data-html="<span class=&quot;ui-keyboard-text&quot;>_</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">_</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-43 ui-state-default ui-corner-all" data-value="+" data-name="+" data-pos="0,12" data-action="+" data-html="<span class=&quot;ui-keyboard-text&quot;>+</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">+</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-bksp ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all" data-value="Bksp" data-name="bksp" data-pos="0,13" data-action="bksp" data-html="<span class=&quot;ui-keyboard-text&quot;>Bksp</span>" data-title="Backspace" title="Backspace"><span class="ui-keyboard-text">Bksp</span></button>
+                    <br class="ui-keyboard-button-endrow">
+
+                    <button class="ui-keyboard-button ui-keyboard-tab ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all" data-value="⇥ Tab" data-name="tab" data-pos="1,0" data-action="tab" data-html="<span class=&quot;ui-keyboard-text&quot;>&amp;#8677; Tab</span>" data-title="Tab" title="Tab"><span class="ui-keyboard-text">⇥ Tab</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-Q ui-state-default ui-corner-all" data-value="Q" data-name="Q" data-pos="1,1" data-action="Q" data-html="<span class=&quot;ui-keyboard-text&quot;>Q</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">Q</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-W ui-state-default ui-corner-all" data-value="W" data-name="W" data-pos="1,2" data-action="W" data-html="<span class=&quot;ui-keyboard-text&quot;>W</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">W</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-E ui-state-default ui-corner-all" data-value="E" data-name="E" data-pos="1,3" data-action="E" data-html="<span class=&quot;ui-keyboard-text&quot;>E</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">E</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-R ui-state-default ui-corner-all" data-value="R" data-name="R" data-pos="1,4" data-action="R" data-html="<span class=&quot;ui-keyboard-text&quot;>R</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">R</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-T ui-state-default ui-corner-all" data-value="T" data-name="T" data-pos="1,5" data-action="T" data-html="<span class=&quot;ui-keyboard-text&quot;>T</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">T</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-Y ui-state-default ui-corner-all" data-value="Y" data-name="Y" data-pos="1,6" data-action="Y" data-html="<span class=&quot;ui-keyboard-text&quot;>Y</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">Y</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-U ui-state-default ui-corner-all" data-value="U" data-name="U" data-pos="1,7" data-action="U" data-html="<span class=&quot;ui-keyboard-text&quot;>U</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">U</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-I ui-state-default ui-corner-all" data-value="I" data-name="I" data-pos="1,8" data-action="I" data-html="<span class=&quot;ui-keyboard-text&quot;>I</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">I</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-O ui-state-default ui-corner-all" data-value="O" data-name="O" data-pos="1,9" data-action="O" data-html="<span class=&quot;ui-keyboard-text&quot;>O</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">O</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-P ui-state-default ui-corner-all" data-value="P" data-name="P" data-pos="1,10" data-action="P" data-html="<span class=&quot;ui-keyboard-text&quot;>P</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">P</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-123 ui-state-default ui-corner-all" data-value="{" data-name="{" data-pos="1,11" data-action="{" data-html="<span class=&quot;ui-keyboard-text&quot;>{</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">{</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-125 ui-state-default ui-corner-all" data-value="}" data-name="}" data-pos="1,12" data-action="}" data-html="<span class=&quot;ui-keyboard-text&quot;>}</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">}</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-124 ui-state-default ui-corner-all" data-value="|" data-name="|" data-pos="1,13" data-action="|" data-html="<span class=&quot;ui-keyboard-text&quot;>|</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">|</span></button>
+                    <br class="ui-keyboard-button-endrow">
+
+                    <button class="ui-keyboard-button ui-keyboard-A ui-state-default ui-corner-all" data-value="A" data-name="A" data-pos="2,0" data-action="A" data-html="<span class=&quot;ui-keyboard-text&quot;>A</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">A</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-S ui-state-default ui-corner-all" data-value="S" data-name="S" data-pos="2,1" data-action="S" data-html="<span class=&quot;ui-keyboard-text&quot;>S</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">S</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-D ui-state-default ui-corner-all" data-value="D" data-name="D" data-pos="2,2" data-action="D" data-html="<span class=&quot;ui-keyboard-text&quot;>D</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">D</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-F ui-state-default ui-corner-all" data-value="F" data-name="F" data-pos="2,3" data-action="F" data-html="<span class=&quot;ui-keyboard-text&quot;>F</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">F</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-G ui-state-default ui-corner-all" data-value="G" data-name="G" data-pos="2,4" data-action="G" data-html="<span class=&quot;ui-keyboard-text&quot;>G</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">G</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-H ui-state-default ui-corner-all" data-value="H" data-name="H" data-pos="2,5" data-action="H" data-html="<span class=&quot;ui-keyboard-text&quot;>H</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">H</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-J ui-state-default ui-corner-all" data-value="J" data-name="J" data-pos="2,6" data-action="J" data-html="<span class=&quot;ui-keyboard-text&quot;>J</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">J</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-K ui-state-default ui-corner-all" data-value="K" data-name="K" data-pos="2,7" data-action="K" data-html="<span class=&quot;ui-keyboard-text&quot;>K</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">K</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-L ui-state-default ui-corner-all" data-value="L" data-name="L" data-pos="2,8" data-action="L" data-html="<span class=&quot;ui-keyboard-text&quot;>L</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">L</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-58 ui-state-default ui-corner-all" data-value=":" data-name=":" data-pos="2,9" data-action=":" data-html="<span class=&quot;ui-keyboard-text&quot;>:</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">:</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-34 ui-state-default ui-corner-all" data-value="&quot;" data-name="&quot;" data-pos="2,10" data-action="&quot;" data-html="<span class=&quot;ui-keyboard-text&quot;>&quot;</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">"</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-enter ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all ui-state-active" data-value="Enter" data-name="enter" data-pos="2,11" data-action="enter" data-html="<span class=&quot;ui-keyboard-text&quot;>Enter</span>" data-title="Enter ⏎" title="Enter ⏎"><span class="ui-keyboard-text">Enter</span></button>
+                    <br class="ui-keyboard-button-endrow">
+
+                    <button class="ui-keyboard-button ui-keyboard-shift ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all ui-keyboard-hasactivestate" data-value="Shift" data-name="shift" data-pos="3,0" data-action="shift" data-html="<span class=&quot;ui-keyboard-text&quot;>Shift</span>" data-title="Shift" title="Shift"><span class="ui-keyboard-text">Shift</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-Z ui-state-default ui-corner-all" data-value="Z" data-name="Z" data-pos="3,1" data-action="Z" data-html="<span class=&quot;ui-keyboard-text&quot;>Z</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">Z</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-X ui-state-default ui-corner-all" data-value="X" data-name="X" data-pos="3,2" data-action="X" data-html="<span class=&quot;ui-keyboard-text&quot;>X</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">X</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-C ui-state-default ui-corner-all" data-value="C" data-name="C" data-pos="3,3" data-action="C" data-html="<span class=&quot;ui-keyboard-text&quot;>C</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">C</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-V ui-state-default ui-corner-all" data-value="V" data-name="V" data-pos="3,4" data-action="V" data-html="<span class=&quot;ui-keyboard-text&quot;>V</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">V</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-B ui-state-default ui-corner-all" data-value="B" data-name="B" data-pos="3,5" data-action="B" data-html="<span class=&quot;ui-keyboard-text&quot;>B</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">B</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-N ui-state-default ui-corner-all" data-value="N" data-name="N" data-pos="3,6" data-action="N" data-html="<span class=&quot;ui-keyboard-text&quot;>N</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">N</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-M ui-state-default ui-corner-all" data-value="M" data-name="M" data-pos="3,7" data-action="M" data-html="<span class=&quot;ui-keyboard-text&quot;>M</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">M</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-60 ui-state-default ui-corner-all" data-value="<" data-name="<" data-pos="3,8" data-action="<" data-html="<span class=&quot;ui-keyboard-text&quot;>&amp;#60;</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">&lt;</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-62 ui-state-default ui-corner-all" data-value=">" data-name=">" data-pos="3,9" data-action=">" data-html="<span class=&quot;ui-keyboard-text&quot;>&amp;#62;</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">&gt;</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-63 ui-state-default ui-corner-all" data-value="?" data-name="?" data-pos="3,10" data-action="?" data-html="<span class=&quot;ui-keyboard-text&quot;>?</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">?</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-shift ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all ui-keyboard-hasactivestate" data-value="Shift" data-name="shift" data-pos="3,11" data-action="shift" data-html="<span class=&quot;ui-keyboard-text&quot;>Shift</span>" data-title="Shift" title="Shift"><span class="ui-keyboard-text">Shift</span></button>
+                    <br class="ui-keyboard-button-endrow">
+
+<!--
+                    <button class="ui-keyboard-button ui-keyboard-accept ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all ui-state-active" data-value="Accept" data-name="accept" data-pos="4,0" data-action="accept" data-html="<span class=&quot;ui-keyboard-text&quot;>Accept</span>" data-title="Accept (Shift+Enter)" title="Accept (Shift+Enter)"><span class="ui-keyboard-text">Accept</span></button>
+-->
+                    <button class="ui-keyboard-button ui-keyboard-space ui-keyboard-actionkey ui-state-default ui-corner-all" data-value="&nbsp;" data-name="space" data-pos="4,1" data-action="space" data-html="<span class=&quot;ui-keyboard-text&quot;>&amp;#160;</span>" data-title="Space" title="Space"><span class="ui-keyboard-text">&nbsp;</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-cancel ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all ui-state-active" data-value="Close" data-name="close" data-pos="4,2" data-action="close" data-html="<span class=&quot;ui-keyboard-text&quot;>Close</span>" data-title="Close (Esc)" title="Close (Esc)"><span class="ui-keyboard-text">Close</span></button>
+
+                    <!-- "TEST" button added to qwerty layout to show the changes to the
+                        "name" attribute & "ui-keyboard-TEST" class name -->
+<!--
+                    <button class="ui-keyboard-button ui-keyboard-TEST ui-keyboard-widekey ui-state-default ui-corner-all" data-value="TEST" data-name="TEST" data-pos="4,5" data-action="TEST" data-html="<span class=&quot;ui-keyboard-text&quot;>TEST</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">TEST</span></button>
+-->
+
+                    <!-- "XΑΒΞ" button added to qwerty layout to show how the "name" &
+                        "ui-keyboard-935-913-914-926" class names are different when not using a-z or 0-9 -->
+<!--
+                    <button class="ui-keyboard-button ui-keyboard-935-913-914-926 ui-keyboard-widekey ui-state-default ui-corner-all ui-state-hover" data-value="ΧΑΒΞ" data-name="ΧΑΒΞ" data-pos="4,6" data-action="ΧΑΒΞ" data-html="<span class=&quot;ui-keyboard-text&quot;>&amp;#935;&amp;#913;&amp;#914;&amp;#926;</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">ΧΑΒΞ</span></button>
+-->
+
+                    <br class="ui-keyboard-button-endrow">
+
+                </div> <!--  ** end shift keyset ** -->
+
+            </div> <!-- end popup -->
+
 
 
 
@@ -144,12 +339,6 @@
     <!--verge is used to measure viewport dimensions-->
     <script type="text/javascript" src="plugins/verge.min.js"></script>
 
-    <!-- keyboard widget css & script -->
-    <!--<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/ui-lightness/jquery-ui.css" rel="stylesheet">-->
-    <!--<link href="plugins/keyboard/css/keyboard.min.css" rel="stylesheet">-->
-    <link href="plugins/keyboard/css/keyboard-dark.min.css" rel="stylesheet">
-    <script src="plugins/keyboard/js/jquery.keyboard.js"></script>
-
     <!--our apps javascript files-->
     <script type="text/javascript" src="js/globals.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
@@ -159,7 +348,7 @@
     <script type="text/javascript" src="pages/settings.js"></script>
     <script type="text/javascript" src="pages/about.js"></script>
     <script type="text/javascript" src="pages/customGateway.js"></script>
-    <script type="text/javascript" src="pages/keyboard.js"></script>
+    <!--<script type="text/javascript" src="pages/keyboard.js"></script>-->
     <script type="text/javascript" src="pages/remote_control.js"></script>
 
 </body>

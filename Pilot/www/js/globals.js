@@ -1,15 +1,13 @@
-/**
- * Created by bgager on 1/8/17.
- */
+
 
 var globals = {
 
     inDevelopment: true,
 
-    version: 0.0201,
-    presentableVersion: "0.2.01",
+    version: 0.0202,
+    presentableVersion: "0.2.02",
 
-    codeDate: '6/13/2017',
+    codeDate: '12/19/2017',
 
     isBrowser: true,
 

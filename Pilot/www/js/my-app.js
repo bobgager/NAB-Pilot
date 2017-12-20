@@ -63,52 +63,87 @@ setTimeout(function(){
 
 
 //**********************************************************************************************************************
-//global functions
+//global stuff
 //**********************************************************************************************************************
 
-function resetToolbar() {
-    $$('#tb_keyboard').removeClass('disabled');
-    $$('#tb_player').removeClass('disabled');
-    $$('#tb_remote').removeClass('disabled');
-}
+    //watch for keyboard button clicks
+    $$(document).on('click', '.ui-keyboard-button', keyboardClick);
 
-function setSkin() {
-    //add in the CSS
-    if(globals.skinStyle === 'pilot'){
-        Dom7('body').addClass('theme-white');
-        Dom7('body').addClass('layout-dark');
+    function keyboardClick(event){
+
+        //get the data-value attribute
+        var value = $(event.target).closest('button').data('value');
+
+        //get the focus off the tapped key
+        $(event.target).closest('button').blur();
+
+        //if it's the Shift key, switch keyboards
+        if (value === 'Shift'){
+            $('.ui-keyboard-keyset-normal').toggle();
+            $('.ui-keyboard-keyset-shift').toggle();
+
+        }
+
+        //if it's the Close key, close the keyboard popup
+        if (value === 'Close'){
+            myApp.closeModal()
+            return;
+        }
+
+        sendKeyboardKey(value)
     }
-    else{
-        //this is where we'll put the OzNet Skin if Daniel delivers one
-        Dom7('body').removeClass('theme-white');
-        Dom7('body').removeClass('layout-dark');
+
+    function sendKeyboardKey(theKey){
+        console.log(' the key tapped was: ' + theKey);
+        myApp.showPreloader('Sending: ' + theKey)
+        setTimeout(function () {
+            myApp.hidePreloader();
+        }, 1000);
     }
-}
+
+    function resetToolbar() {
+        //$$('#tb_keyboard').removeClass('disabled');
+        $$('#tb_player').removeClass('disabled');
+        $$('#tb_remote').removeClass('disabled');
+    }
+
+    function setSkin() {
+        //add in the CSS
+        if(globals.skinStyle === 'pilot'){
+            Dom7('body').addClass('theme-white');
+            Dom7('body').addClass('layout-dark');
+        }
+        else{
+            //this is where we'll put the OzNet Skin if Daniel delivers one
+            Dom7('body').removeClass('theme-white');
+            Dom7('body').removeClass('layout-dark');
+        }
+    }
 
 //**********************************************************************************************************************
 // Index page functions
 //**********************************************************************************************************************
 
-myApp.onPageInit('index', function (page) {
+    myApp.onPageInit('index', function (page) {
 
 
-});
+    });
 
-myApp.onPageBeforeRemove('index', function (page) {
+    myApp.onPageBeforeRemove('index', function (page) {
 
-});
+    });
 
-myApp.onPageBeforeAnimation('index', function (page) {
+    myApp.onPageBeforeAnimation('index', function (page) {
 
-    $$('#initializingCard').hide();
+        $$('#initializingCard').hide();
 
-});
+    });
 
-myApp.onPageAfterAnimation('index', function (page) {
+    myApp.onPageAfterAnimation('index', function (page) {
 
 
 
-});
+    });
 
 
 

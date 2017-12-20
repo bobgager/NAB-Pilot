@@ -13,7 +13,8 @@ myApp.onPageInit('keyboard', function (page) {
     });
 // Initialize keyboard script on hidden input
 // set "position.of" to the same link as above
-    $('#hidden')
+
+/*    $('#hidden')
         .keyboard({
             layout   : 'qwerty',
             position : {
@@ -21,7 +22,7 @@ myApp.onPageInit('keyboard', function (page) {
                 my : 'center top',
                 at : 'center top'
             }
-        })
+        })*/
 
 
 });
