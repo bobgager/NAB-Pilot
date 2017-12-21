@@ -203,7 +203,7 @@ button.ui-keyboard-extender span {
 
 
 
-@media only screen and (max-width: 950px) {
+@media only screen and (max-width: 1000px) {
 	.ui-keyboard-button {
 		min-width: 4em;
 		height: 4em;
