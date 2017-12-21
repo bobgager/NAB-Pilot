@@ -86,6 +86,8 @@ setTimeout(function(){
 
         //if it's the Close key, close the keyboard popup
         if (value === 'Close'){
+            $('.ui-keyboard-keyset-normal').show();
+            $('.ui-keyboard-keyset-shift').hide();
             myApp.closeModal()
             return;
         }
