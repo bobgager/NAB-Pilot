@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body >
+<body class="layout-dark" >
     <!-- Status bar overlay for full screen mode (PhoneGap) -->
     <div class="statusbar-overlay"></div>
 
@@ -168,7 +168,7 @@
                     <br class="ui-keyboard-button-endrow">
 
                     <!-- second row -->
-                    <button class="ui-keyboard-button ui-keyboard-tab ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all" data-value="⇥ Tab" data-name="tab" data-pos="1,0" data-action="tab" data-html="<span class=&quot;ui-keyboard-text&quot;>&amp;#8677; Tab</span>" data-title="Tab" title="Tab"><span class="ui-keyboard-text">⇥ Tab</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-tab ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all" data-value="Tab" data-name="tab" data-pos="1,0" data-action="tab" data-html="<span class=&quot;ui-keyboard-text&quot;>&amp;#8677; Tab</span>" data-title="Tab" title="Tab"><span class="ui-keyboard-text">⇥ Tab</span></button>
                     <button class="ui-keyboard-button ui-keyboard-q ui-state-default ui-corner-all" data-value="q" data-name="q" data-pos="1,1" data-action="q" data-html="<span class=&quot;ui-keyboard-text&quot;>q</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">q</span></button>
                     <button class="ui-keyboard-button ui-keyboard-w ui-state-default ui-corner-all" data-value="w" data-name="w" data-pos="1,2" data-action="w" data-html="<span class=&quot;ui-keyboard-text&quot;>w</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">w</span></button>
                     <button class="ui-keyboard-button ui-keyboard-e ui-state-default ui-corner-all" data-value="e" data-name="e" data-pos="1,3" data-action="e" data-html="<span class=&quot;ui-keyboard-text&quot;>e</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">e</span></button>
@@ -255,7 +255,7 @@
                     <button class="ui-keyboard-button ui-keyboard-bksp ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all" data-value="Bksp" data-name="bksp" data-pos="0,13" data-action="bksp" data-html="<span class=&quot;ui-keyboard-text&quot;>Bksp</span>" data-title="Backspace" title="Backspace"><span class="ui-keyboard-text">Bksp</span></button>
                     <br class="ui-keyboard-button-endrow">
 
-                    <button class="ui-keyboard-button ui-keyboard-tab ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all" data-value="⇥ Tab" data-name="tab" data-pos="1,0" data-action="tab" data-html="<span class=&quot;ui-keyboard-text&quot;>&amp;#8677; Tab</span>" data-title="Tab" title="Tab"><span class="ui-keyboard-text">⇥ Tab</span></button>
+                    <button class="ui-keyboard-button ui-keyboard-tab ui-keyboard-widekey ui-keyboard-actionkey ui-state-default ui-corner-all" data-value="Tab" data-name="tab" data-pos="1,0" data-action="tab" data-html="<span class=&quot;ui-keyboard-text&quot;>&amp;#8677; Tab</span>" data-title="Tab" title="Tab"><span class="ui-keyboard-text">⇥ Tab</span></button>
                     <button class="ui-keyboard-button ui-keyboard-Q ui-state-default ui-corner-all" data-value="Q" data-name="Q" data-pos="1,1" data-action="Q" data-html="<span class=&quot;ui-keyboard-text&quot;>Q</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">Q</span></button>
                     <button class="ui-keyboard-button ui-keyboard-W ui-state-default ui-corner-all" data-value="W" data-name="W" data-pos="1,2" data-action="W" data-html="<span class=&quot;ui-keyboard-text&quot;>W</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">W</span></button>
                     <button class="ui-keyboard-button ui-keyboard-E ui-state-default ui-corner-all" data-value="E" data-name="E" data-pos="1,3" data-action="E" data-html="<span class=&quot;ui-keyboard-text&quot;>E</span>" role="button" type="button" aria-disabled="false" tabindex="-1"><span class="ui-keyboard-text">E</span></button>
@@ -335,13 +335,22 @@
     <!--load jquery-->
     <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
 
+    <!--load AWS-->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.33.min.js"></script>
+
     <!--some plug-ins-->
     <!--verge is used to measure viewport dimensions-->
     <script type="text/javascript" src="plugins/verge.min.js"></script>
 
     <!--our apps javascript files-->
     <script type="text/javascript" src="js/globals.js"></script>
+    <script type="text/javascript" src="js/gatewayConnector.js"></script>
+    <script type="text/javascript" src="js/awsconnector.js"></script>
+    <script type="text/javascript" src="js/cobaltfireutils.js"></script>
+
     <script type="text/javascript" src="js/my-app.js"></script>
+
+
     <!--our page script files-->
     <script type="text/javascript" src="pages/player.js"></script>
     <script type="text/javascript" src="pages/gateway.js"></script>

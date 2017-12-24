@@ -9,13 +9,7 @@ var globals = {
 
     codeDate: '12/20/2017',
 
-    isBrowser: true,
 
-    skinStyle: 'pilot',
-
-    gatewayList: [],
-
-    selectedGateway: null,
 
     customTestGateway: {
         name: 'Customizable Test Gateway',
@@ -29,7 +23,17 @@ var globals = {
         deviceID: null,
         portNum: null,
         status: 'Active'
-    }
+    },
+
+    gatewayList: [],
+
+    isBrowser: true,
+
+    selectedGateway: null,
+
+    skinStyle: 'pilot',
+
+    useSimulatedGateway: false
 
 
-}
+};

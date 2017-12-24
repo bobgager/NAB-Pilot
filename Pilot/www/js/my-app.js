@@ -66,6 +66,9 @@ setTimeout(function(){
 //global stuff
 //**********************************************************************************************************************
 
+    //initialize AWS
+    awsConnector.initializeAWS(null);
+
     //watch for keyboard button clicks
     $$(document).on('click', '.ui-keyboard-button', keyboardClick);
 
@@ -92,15 +95,7 @@ setTimeout(function(){
             return;
         }
 
-        sendKeyboardKey(value)
-    }
-
-    function sendKeyboardKey(theKey){
-        console.log(' the key tapped was: ' + theKey);
-        myApp.showPreloader('Sending: ' + theKey)
-        setTimeout(function () {
-            myApp.hidePreloader();
-        }, 1000);
+        gatewayConnector.sendKeystroke(value);
     }
 
     function resetToolbar() {

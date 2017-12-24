@@ -31,6 +31,9 @@ myApp.onPageBeforeAnimation('settings', function (page) {
         $$('#gatewayNameLabel').html('Please select a Gateway');
     }
 
+    //set the useSimulatedGatewaySwitch checkbox
+    $$('#useSimulatedGatewaySwitch').prop('checked', globals.useSimulatedGateway);
+
 });
 
 
@@ -38,12 +41,13 @@ myApp.onPageBeforeAnimation('settings', function (page) {
 var settingsPage = {
 
     //******************************************************************************************************************
-    updateApplication: function () {
-        if(globals.isBrowser){
-            myApp.alert("You're running the browser version which is always up to date.", 'Attention!');
+    setUseSimulatedGateway: function () {
+        if ($('#useSimulatedGatewaySwitch').is(":checked")) {
+            // it is checked
+            globals.useSimulatedGateway = true;
         }
-        else{
-            var ref = cordova.InAppBrowser.open('https://build.phonegap.com/apps/2424474/install/7AQ5kwxk6awKgpE7QWAV', '_system');
+        else {
+            globals.useSimulatedGateway = false;
         }
     },
 
@@ -60,6 +64,16 @@ var settingsPage = {
 
         setSkin();
 
+    },
+
+    //******************************************************************************************************************
+    updateApplication: function () {
+        if(globals.isBrowser){
+            myApp.alert("You're running the browser version which is always up to date.", 'Attention!');
+        }
+        else{
+            var ref = cordova.InAppBrowser.open('https://build.phonegap.com/apps/2424474/install/7AQ5kwxk6awKgpE7QWAV', '_system');
+        }
     }
 
     //******************************************************************************************************************
