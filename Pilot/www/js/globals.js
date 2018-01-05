@@ -4,8 +4,8 @@ var globals = {
 
     inDevelopment: true,
 
-    version: 0.0206,
-    presentableVersion: "0.2.06",
+    version: 0.0207,
+    presentableVersion: "0.2.07",
 
     codeDate: '1/5/2018',
 

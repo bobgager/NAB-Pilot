@@ -80,8 +80,12 @@ setTimeout(function(){
 
         //get the focus off the tapped key
         $('.ui-keyboard-button').blur();
-        //$(event.target).closest('button').blur();
-        //$('#keyboardPopup').focus();
+
+        //visually show a click
+        $(event.target).closest('button').addClass('ui-keyboard-clicked');
+        setTimeout(function () {
+            $(event.target).closest('button').removeClass('ui-keyboard-clicked');
+        }, 200);
 
         //if it's the Shift key, switch keyboards
         if (value === 'Shift'){
@@ -107,8 +111,12 @@ function remoteClick(event){
 
     //get the focus off the tapped key
     $('.ui-keyboard-button').blur();
-    //$(event.target).closest('button').blur();
-    //$('#keyboardPopup').focus();
+
+    //visually show a click
+    $(event.target).closest('button').addClass('ui-keyboard-clicked');
+    setTimeout(function () {
+        $(event.target).closest('button').removeClass('ui-keyboard-clicked');
+    }, 200);
 
     //if it's the Close key, close the keyboard popup
     if (value === 'Close'){
