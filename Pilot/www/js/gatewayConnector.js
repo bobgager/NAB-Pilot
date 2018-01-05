@@ -1,20 +1,26 @@
 
 var gatewayConnector = {
 
-    sendKeystroke: function (keyStroke) {
+    sendKeystroke: function (keyStroke, device) {
 
-        console.log(' the key tapped was: ' + keyStroke);
+        //console.log(' the key tapped was: ' + keyStroke);
+
+        switch(device) {
+            case "keyboard":
+                var notificationType = 'keyboardKeystroke';
+                break;
+            case "remote":
+                var notificationType = 'remoteKeystroke';
+                break;
+            default:
+            //code block
+        }
 
         if (globals.useSimulatedGateway){
 
-/*            myApp.showPreloader('Sending: ' + keyStroke + ' to Simulated Gateway');
-            setTimeout(function () {
-                myApp.hidePreloader();
-            }, 1000);*/
-
             var notificationObject = {
                 createTime: new Date().getTime(),
-                notificationType: 'keyboardKeystroke',
+                notificationType: notificationType,
                 keyStroke: keyStroke
             };
 

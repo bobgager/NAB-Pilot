@@ -33,7 +33,7 @@ var globals = {
 
     skinStyle: 'pilot',
 
-    useSimulatedGateway: false
+    useSimulatedGateway: true
 
 
 };

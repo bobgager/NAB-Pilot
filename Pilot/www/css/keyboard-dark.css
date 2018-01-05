@@ -202,6 +202,20 @@ button.ui-keyboard-extender span {
 }
 
 
+/*Colored remote buttons*/
+.ui-red-button {
+	background-image: radial-gradient(#ff1212, rgb(40, 40, 40));
+}
+.ui-yellow-button {
+	background-image: radial-gradient(#ffff3e, rgb(40, 40, 40));
+}
+.ui-green-button {
+	background-image: radial-gradient(#00ff00, rgb(40, 40, 40));
+}
+.ui-blue-button {
+	background-image: radial-gradient(#0000ff, rgb(40, 40, 40));
+}
+
 
 @media only screen and (max-width: 1000px) {
 	.ui-keyboard-button {

@@ -69,8 +69,9 @@ setTimeout(function(){
     //initialize AWS
     awsConnector.initializeAWS(null);
 
-    //watch for keyboard button clicks
-    $$(document).on('click', '.ui-keyboard-button', keyboardClick);
+    //watch for keyboard and remote button clicks
+    $$(document).on('click', '.keyboard-button', keyboardClick);
+    $$(document).on('click', '.remote-button', remoteClick);
 
     function keyboardClick(event){
 
@@ -78,7 +79,9 @@ setTimeout(function(){
         var value = $(event.target).closest('button').data('value');
 
         //get the focus off the tapped key
-        $(event.target).closest('button').blur();
+        $('.ui-keyboard-button').blur();
+        //$(event.target).closest('button').blur();
+        //$('#keyboardPopup').focus();
 
         //if it's the Shift key, switch keyboards
         if (value === 'Shift'){
@@ -95,8 +98,26 @@ setTimeout(function(){
             return;
         }
 
-        gatewayConnector.sendKeystroke(value);
+        gatewayConnector.sendKeystroke(value, "keyboard");
     }
+function remoteClick(event){
+
+    //get the data-value attribute
+    var value = $(event.target).closest('button').data('value');
+
+    //get the focus off the tapped key
+    $('.ui-keyboard-button').blur();
+    //$(event.target).closest('button').blur();
+    //$('#keyboardPopup').focus();
+
+    //if it's the Close key, close the keyboard popup
+    if (value === 'Close'){
+        myApp.closeModal()
+        return;
+    }
+
+    gatewayConnector.sendKeystroke(value, "remote");
+}
 
     function resetToolbar() {
         //$$('#tb_keyboard').removeClass('disabled');
