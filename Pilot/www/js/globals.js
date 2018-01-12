@@ -25,6 +25,8 @@ var globals = {
         status: 'Active'
     },
 
+    gatewayID: '1234',
+
     gatewayList: [],
 
     isBrowser: true,
@@ -33,7 +35,9 @@ var globals = {
 
     skinStyle: 'pilot',
 
-    useSimulatedGateway: true
+    useSimulatedGateway: false,
+
+    wsURL: 'ws://echo.websocket.org'
 
 
 };

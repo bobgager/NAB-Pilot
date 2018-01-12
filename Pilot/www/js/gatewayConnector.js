@@ -1,45 +1,67 @@
 
 var gatewayConnector = {
 
+    ws: null,
+
     sendKeystroke: function (keyStroke, device) {
 
-        //console.log(' the key tapped was: ' + keyStroke);
+        var JSONobject = { device: device, data: { keyCharacter: keyStroke }};
 
-        switch(device) {
-            case "keyboard":
-                var notificationType = 'keyboardKeystroke';
-                break;
-            case "remote":
-                var notificationType = 'remoteKeystroke';
-                break;
-            default:
-            //code block
-        }
 
-        if (globals.useSimulatedGateway){
+        if (globals.isBrowser){
 
-            var notificationObject = {
-                createTime: new Date().getTime(),
-                notificationType: notificationType,
-                keyStroke: keyStroke
-            };
-
-            var gatewayID = '1234';
-
-            awsConnector.saveNotification(gatewayID,notificationObject, gatewayConnector.SG_notificationSent)
-
+            gatewayConnector.logToSimulatedGateway(JSON.stringify(JSONobject));
 
         }
 
         else {
 
-            myApp.showPreloader('Sending: ' + keyStroke + ' to Gateway');
-            setTimeout(function () {
-                myApp.hidePreloader();
-            }, 500);
+            gatewayConnector.sendWebSocket(JSON.stringify(JSONobject));
 
         }
 
+    },
+
+    //******************************************************************************************************************
+    logToSimulatedGateway: function (packetString) {
+
+        var notificationObject = {
+            createTime: new Date().getTime(),
+            notificationType: 'webSocketNotification',
+            packet: packetString
+        };
+
+        awsConnector.saveNotification(globals.gatewayID, notificationObject, gatewayConnector.SG_notificationSent)
+
+    },
+
+    //******************************************************************************************************************
+    sendWebSocket: function (packetString) {
+
+        gatewayConnector.logToSimulatedGateway('Creating ws:// to URL: ' + globals.wsURL);
+        var webSocket = new WebSocket(globals.wsURL);
+
+        webSocket.onopen = function () {
+            myApp.alert('Websocket Open.');
+            gatewayConnector.logToSimulatedGateway('webSocket.onopen() Sent the following string via WebSocket: ' + packetString);
+            this.send(packetString);         // transmit packetString after connecting
+        };
+
+        webSocket.onmessage = function (event) {
+            myApp.alert('Response from ws://echo.websocket.org. ' + event.data);
+            gatewayConnector.logToSimulatedGateway('webSocket.onmessage() Response from ' + globals.wsURL + ' | ' + event.data);
+            this.close();
+        };
+
+        webSocket.onerror = function () {
+            myApp.alert('Websocket error occurred!');
+            gatewayConnector.logToSimulatedGateway('Websocket error occurred!');
+        };
+
+        webSocket.onclose = function (event) {
+            myApp.alert('close code=' + event.code);
+            gatewayConnector.logToSimulatedGateway('close code=' + event.code);
+        };
 
     },
 
@@ -51,6 +73,5 @@ var gatewayConnector = {
         }
 
     }
-
 
 };

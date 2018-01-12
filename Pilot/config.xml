@@ -38,6 +38,7 @@
 
     <plugin name="cordova-plugin-networkinterface" spec="1.0.8" />
     <plugin name="cordova-plugin-device" spec="1.1.5" />
+    <plugin name="cordova-plugin-websocket" spec="0.12.2" />
 
 
 

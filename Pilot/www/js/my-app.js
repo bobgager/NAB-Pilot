@@ -1,20 +1,22 @@
 // Initialize app
 var myApp = new Framework7();
 
+
+// If we need to use custom DOM library, let's save it to $$ variable:
+var $$ = Dom7;
+
 //see if we're running in the browser
 if(myApp.device.os){
     globals.isBrowser = false;
 }
 
-/*// Handle Cordova Device Ready Event
+// Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
-    console.log("Device is ready!");
-});*/
+
+        gatewayConnector.sendWebSocket({keyStroke: 'initialize'})
+});
 
 setSkin();
-
-// If we need to use custom DOM library, let's save it to $$ variable:
-var $$ = Dom7;
 
 // Add view
 var mainView = myApp.addView('.view-main', {
