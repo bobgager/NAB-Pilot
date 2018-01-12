@@ -4,10 +4,10 @@ var globals = {
 
     inDevelopment: true,
 
-    version: 0.0207,
-    presentableVersion: "0.2.07",
+    version: 0.0208,
+    presentableVersion: "0.2.08",
 
-    codeDate: '1/5/2018',
+    codeDate: '1/12/2018',
 
 
 
@@ -34,8 +34,6 @@ var globals = {
     selectedGateway: null,
 
     skinStyle: 'pilot',
-
-    useSimulatedGateway: false,
 
     wsURL: 'ws://echo.websocket.org'
 

@@ -41,7 +41,7 @@ myApp.onPageBeforeAnimation('settings', function (page) {
 var settingsPage = {
 
     //******************************************************************************************************************
-    setUseSimulatedGateway: function () {
+/*    setUseSimulatedGateway: function () {
         if ($('#useSimulatedGatewaySwitch').is(":checked")) {
             // it is checked
             globals.useSimulatedGateway = true;
@@ -49,7 +49,7 @@ var settingsPage = {
         else {
             globals.useSimulatedGateway = false;
         }
-    },
+    },*/
 
     //******************************************************************************************************************
     skinSelectorChange: function () {
