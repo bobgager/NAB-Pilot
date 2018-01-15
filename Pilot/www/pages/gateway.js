@@ -197,9 +197,9 @@ var gatewayPage = {
         $$('#gatewayList').html(gatewayListHTML);
 
         //see if we should hide the back button
-        if (!globals.selectedGateway){
+/*        if (!globals.selectedGateway){
             $$('#gatewayBackBTN').hide();
-        }
+        }*/
 
 
 

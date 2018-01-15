@@ -1,27 +1,25 @@
-/**
- * Created by bgager on 1/5/17.
- */
 
-myApp.onPageInit('remoteControl', function (page) {
+
+myApp.onPageInit('broadcasterApp', function (page) {
 
 
 });
 
-myApp.onPageBeforeRemove('remoteControl', function (page) {
+myApp.onPageBeforeRemove('broadcasterApp', function (page) {
 
     $$('#tb_remote').removeClass('disabled');
 
 });
 
-myApp.onPageBeforeAnimation('remoteControl', function (page) {
+myApp.onPageBeforeAnimation('broadcasterApp', function (page) {
 
-    $$('#tb_remote').addClass('disabled');
+
 
 });
 
 
 
-var remoteControlPage = {
+var watchTVPage = {
 
 
 

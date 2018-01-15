@@ -42,25 +42,25 @@ var gatewayConnector = {
         var webSocket = new WebSocket(globals.wsURL);
 
         webSocket.onopen = function () {
-            myApp.alert('Websocket Open.');
-            gatewayConnector.logToSimulatedGateway('webSocket.onopen() Sent the following string via WebSocket: ' + packetString);
+            //myApp.alert('Websocket Open.');
+            gatewayConnector.logToSimulatedGateway('WebSocket Send | ' + packetString);
             this.send(packetString);         // transmit packetString after connecting
         };
 
         webSocket.onmessage = function (event) {
-            myApp.alert('Response from ws://echo.websocket.org. ' + event.data);
-            gatewayConnector.logToSimulatedGateway('webSocket.onmessage() Response from ' + globals.wsURL + ' | ' + event.data);
+            //myApp.alert('Response from ws://echo.websocket.org. ' + event.data);
+            gatewayConnector.logToSimulatedGateway('Websocket Response | ' + event.data);
             this.close();
         };
 
         webSocket.onerror = function () {
-            myApp.alert('Websocket error occurred!');
+            //myApp.alert('Websocket error occurred!');
             gatewayConnector.logToSimulatedGateway('Websocket error occurred!');
         };
 
         webSocket.onclose = function (event) {
-            myApp.alert('close code=' + event.code);
-            gatewayConnector.logToSimulatedGateway('close code=' + event.code);
+            //myApp.alert('close code=' + event.code);
+            gatewayConnector.logToSimulatedGateway('Websocket close code=' + event.code);
         };
 
     },

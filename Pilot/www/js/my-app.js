@@ -13,7 +13,6 @@ if(myApp.device.os){
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
 
-        gatewayConnector.sendWebSocket({keyStroke: 'initialize'})
 });
 
 setSkin();
