@@ -164,6 +164,12 @@ function remoteClick(event){
 
         $$('#initializingCard').hide();
 
+        myApp.hideToolbar($$('#gatewayToolbar'));
+        myApp.hideToolbar($$('#gatewayScannerToolbar'));
+        myApp.showToolbar($$('#mainToolbar'));
+
+
+
     });
 
     myApp.onPageAfterAnimation('index', function (page) {

@@ -8,8 +8,6 @@ myApp.onPageInit('gateway', function (page) {
     $$(document).on('click', '.gateway', gatewayPage.gatewayClicked);
     $$(document).on('click', '#clearGatewayBTN', gatewayPage.clearGatewayClicked);
 
-    $$(document).on('refresh','.pull-to-refresh-content',gatewayPage.refreshPage)
-
 
 
 });
@@ -20,8 +18,6 @@ myApp.onPageBeforeRemove('gateway', function (page) {
     $$(document).off('click', '.gateway', gatewayPage.gatewayClicked);
     $$(document).off('click', '#clearGatewayBTN', gatewayPage.clearGatewayClicked);
     $$(document).off('click', '#customGatewayBTN', gatewayPage.customGatewayClicked);
-
-    $$(document).off('refresh','.pull-to-refresh-content',gatewayPage.refreshPage)
 
     //hide the toolbar
     myApp.hideToolbar($$('#gatewayToolbar'));
@@ -53,90 +49,44 @@ var gatewayPage = {
     //******************************************************************************************************************
     refreshPage: function () {
 
-        myApp.pullToRefreshDone();
-
-        gatewayPage.generateGateways();
+        gatewayPage.renderGatewayList();
 
     },
 
     //******************************************************************************************************************
-    generateGateways: function () {
+    renderGatewayList: function () {
 
-        myApp.showPreloader('Generating Hardcoded Gateways')
-        setTimeout(function () {
-            myApp.hidePreloader();
-        }, 500);
+        //see if there are any gateways saved
+        if (globals.gatewayList.length === 0){
 
-        //clear the global list of gateways
-        globals.gatewayList = [];
+            $$('#gatewayListTitle').html('There are no saved Gateways');
+            $$('#gatewayList').html('Please click "Scan New Gateway" below to add a Gateway.');
 
+            $$('#clearGatewayBTN').addClass('disabled');
 
-        //fill it full of some hard coded gateways
+            return;
 
-        /*var gateway0 = {};
-        gateway0.name = 'Family Room';
-        gateway0.url = 'http://192.168.1.2:88/MEDIA/livestream';
-        gateway0.player = 'inappbrowser';
-        gateway0.status = 'Active';
-        globals.gatewayList.push(gateway0);
+        }
+        else {
 
-        var gateway1 = {};
-        gateway1.name = 'Kids Room';
-        gateway1.url = 'http://192.168.1.3:88/MEDIA/livestream';
-        gateway1.player = 'inappbrowser';
-        gateway1.status = 'Active';
-        globals.gatewayList.push(gateway1);
+            $$('#gatewayListTitle').html('');
+            $$('#gatewayList').html('Rendering gateway list');
 
-        var gateway2 = {};
-        gateway2.name = 'Master Bedroom';
-        gateway2.url = '192.168.1.4:88/MEDIA/livestream';
-        gateway2.player = 'inappbrowser';
-        gateway2.status = 'Active';
-        globals.gatewayList.push(gateway2);
-
-        var gateway3 = {};
-        gateway3.name = 'Cobalt Fire Test Gateway';
-        gateway3.url = 'http://cobaltfire.com/demo/pilot/testpage.html';
-        gateway3.player = 'inappbrowser';
-        gateway3.status = 'Active';
-        globals.gatewayList.push(gateway3);
-*/
-        var gateway4 = {};
-        gateway4.name = '.mp4 Video Test Gateway';
-        gateway4.url = 'http://cobaltfire.com/demo/pilot/PilotTestVideo.mp4';
-        gateway4.player = 'streaming-media';
-        gateway4.status = 'Active';
-        globals.gatewayList.push(gateway4);
-
-        var gateway5 = {};
-        gateway5.name = 'Big Buck Bunny';
-        gateway5.url = 'http://cobaltfire.com/demo/pilot/bunny.html';
-        gateway5.player = 'inappbrowser';
-        gateway5.status = 'Active';
-        globals.gatewayList.push(gateway5);
+        }
 
 
-        globals.gatewayList.push(globals.customTestGateway);
-
-
-        //now, set the selected gateway as Connected if there is a selected gateway
+        //set the selected gateway as Connected if there is a selected gateway
         if(globals.selectedGateway){
             //set the selectedGateway global with the selected gateway
             globals.gatewayList.forEach(function (gateway,index) {
                 if(gateway.name === globals.selectedGateway.name){
                     globals.gatewayList[index].status = 'Connected';
+                    $$('#clearGatewayBTN').removeClass('disabled');
                 }
             });
         }
 
 
-
-        gatewayPage.renderGatewayList();
-    },
-
-    //******************************************************************************************************************
-    renderGatewayList: function () {
-        $$('#gatewayList').html('rendering gateway list');
 
         var gatewayListHTML = '<ul>';
 

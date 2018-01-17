@@ -80,7 +80,7 @@
                     <div class="page-content">
 
                         <div class="content-block center-text">
-                            <img src="images/Pilot_Logo.png">
+                            <img src="images/Pilot-Logo.png" style="width: 75%">
                         </div>
 
                         <div id="initializingCard" class="card width-50-centered center-text">
@@ -97,7 +97,7 @@
             </div>
 
             <!-- Bottom Toolbar-->
-            <div class="toolbar">
+            <div id="mainToolbar" class="toolbar">
                 <div class="toolbar-inner">
                     <!-- Toolbar links -->
 
@@ -128,14 +128,22 @@
                 </div>
             </div>
 
-
-
-            <div id="gatewayToolbar" class="toolbar tabbar tabbar-labels toolbar-hidden">
+            <div id="gatewayToolbar" class="toolbar toolbar-hidden">
                 <div class="toolbar-inner">
-                    <a id="clearGatewayBTN" href="#" class="tab-link active">
+
+                    <a href="#" class="link"> </a>
+
+                    <a id="scanGatewayBTN" href="pages/scangateway.html" onclick="$('#gatewayListTitle').html('');$('#gatewayList').html('');"><i class="fas fa-qrcode"></i>&nbsp;&nbsp;Scan New Gateway</a>
+
+                    <a id="clearGatewayBTN" href="#"><i class="fas fa-unlink"></i>&nbsp;&nbsp;Disconnect Gateway</a>
+
+                    <a href="#" class="link"> </a>
+
+<!--                    <a id="clearGatewayBTN" href="#" class="tab-link active">
                         <i class="f7-icons">delete_round</i>
                         <span class="tabbar-label">Disconnect Gateway</span>
-                    </a>
+                    </a>-->
+
                     <!--<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                     <a id="customGatewayBTN" href="#" class="tab-link">
                         <i class="f7-icons">compose</i>
@@ -144,7 +152,17 @@
                 </div>
             </div>
 
+            <div id="gatewayScannerToolbar" class="toolbar toolbar-hidden">
+                <div class="toolbar-inner">
 
+                    <a href="#" class="link"> </a>
+
+                    <a id="cancelScanBTN" href="#" onclick="scanGatewayPage.cancelScan()"><i class="fas fa-ban"></i>&nbsp;&nbsp;Cancel Scan</a>
+
+                    <a href="#" class="link"> </a>
+
+                </div>
+            </div>
 
 
 
@@ -463,9 +481,9 @@
     <script type="text/javascript" src="pages/gateway.js"></script>
     <script type="text/javascript" src="pages/settings.js"></script>
     <script type="text/javascript" src="pages/about.js"></script>
-    <script type="text/javascript" src="pages/customGateway.js"></script>
+    <script type="text/javascript" src="pages/scangateway.js"></script>
     <script type="text/javascript" src="pages/companionapp.js"></script>
-    <script type="text/javascript" src="pages/companionapp.js"></script>
+    <script type="text/javascript" src="pages/broadcasterapp.js"></script>
     <script type="text/javascript" src="pages/watchtv.js"></script>
 
 </body>
