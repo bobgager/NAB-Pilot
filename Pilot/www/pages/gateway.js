@@ -74,7 +74,6 @@ var gatewayPage = {
 
         }
 
-
         //set the selected gateway as Connected if there is a selected gateway
         if(globals.selectedGateway){
             //set the selectedGateway global with the selected gateway
@@ -86,7 +85,7 @@ var gatewayPage = {
             });
         }
 
-
+        //{"wsURL":"1234","deviceId":"gateway1","name":"Bobs Room","accountId":"500","gatewayIP":"192.168.0.1"}
 
         var gatewayListHTML = '<ul>';
 
@@ -128,10 +127,10 @@ var gatewayPage = {
             gatewayListHTML +=                  '<div class="item-title-row">';
             gatewayListHTML +=                      '<div class="item-title">NAME: '+ gateway.name +'</div>';
             gatewayListHTML +=                  '</div>';
-            gatewayListHTML +=                  '<div class="item-subtitle">ADDRESS: '+ gateway.url +'</div>';
-            gatewayListHTML +=                  '<div class="item-subtitle">HOSTNAME: '+ gateway.hostname +'</div>';
-            gatewayListHTML +=                  '<div class="item-subtitle">PLAYER: '+ gateway.player +'</div>';
-            gatewayListHTML +=                  '<div class="item-subtitle">STATUS: '+ gateway.status +'</div>';
+            gatewayListHTML +=                  '<div class="item-subtitle">wsURL: '+ gateway.wsURL +'</div>';
+            gatewayListHTML +=                  '<div class="item-subtitle">deviceId: '+ gateway.deviceId +'</div>';
+            gatewayListHTML +=                  '<div class="item-subtitle">accountId: '+ gateway.accountId +'</div>';
+            gatewayListHTML +=                  '<div class="item-subtitle">gatewayIP: '+ gateway.gatewayIP +'</div>';
             gatewayListHTML +=              '</div>';
             gatewayListHTML +=          '</a>';
             gatewayListHTML +=      '</li>';
@@ -145,11 +144,6 @@ var gatewayPage = {
 
 
         $$('#gatewayList').html(gatewayListHTML);
-
-        //see if we should hide the back button
-/*        if (!globals.selectedGateway){
-            $$('#gatewayBackBTN').hide();
-        }*/
 
 
 
@@ -166,18 +160,18 @@ var gatewayPage = {
         myApp.hideToolbar($$('#gatewayToolbar'));
 
         //see if they clicked on the Custom Gateway
-        if($$(self).data("gatewayName") === globals.customTestGateway.name){
+/*        if($$(self).data("gatewayName") === globals.customTestGateway.name){
             mainView.router.load({url: 'pages/customGateway.html'});
             return;
-        }
+        }*/
 
         //set the selectedGateway global with the selected gateway
+        //TODO: selected gateway should be based off of deviceID and not name.
+
         globals.gatewayList.forEach(function (gateway,index) {
             if(gateway.name === $$(self).data("gatewayName")){
                 globals.selectedGateway = gateway;
                 globals.gatewayList[index].status = 'Connected';
-
-
 
                 //and store it on the device
                 myApp.formStoreData('selectedGateway', gateway);
@@ -185,6 +179,7 @@ var gatewayPage = {
 
             }
             else{
+                //mark any previously connected Gateway as Active, not Connected
                 if (gateway.status === 'Connected'){
                     globals.gatewayList[index].status = 'Active';
                 }
@@ -195,7 +190,7 @@ var gatewayPage = {
 
 
         //navigate to the Player page
-        mainView.router.load({url: 'pages/player.html'});
+        mainView.router.load({url: 'index.html'});
 
 
 

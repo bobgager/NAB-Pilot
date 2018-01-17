@@ -89,12 +89,28 @@ var scanGatewayPage = {
 
         // The scan completed,
 
-        $('#scanInstructions').html('<span style="color: #00d449">QR Code Scan Complete</span>');
-
         //stop scanning and freeze the frame
         QRScanner.pausePreview(function(status){
             console.log(status);
         });
+
+        //make sure the QR code seems to be a valid Gateway QR code
+        if (!err){
+            if (text.indexOf('gatewayIP') === -1){
+                //not a valid Gateway QR code
+                myApp.alert("That doesn't seem to be a QR code from a Pilot Gateway.", 'Please Try Again', function () {
+                    QRScanner.scan(
+                        scanGatewayPage.scanComplete
+                    );
+                });
+
+                return;
+            }
+        }
+
+        $('#scanInstructions').html('<span style="color: #00d449">QR Code Scan Complete</span>');
+
+
 
 
         if(err){
@@ -105,11 +121,9 @@ var scanGatewayPage = {
         }
         else {
 
-
-
             scanGatewayPage.lastScannedText = text;
 
-            setTimeout(scanGatewayPage.finishScan, 2000);
+            setTimeout(scanGatewayPage.finishScan, 1000);
 
         }
     },
@@ -139,10 +153,31 @@ var scanGatewayPage = {
 
         if (scanGatewayPage.lastScannedText !== ''){
             //display the contents of the QR code:
-            myApp.alert(scanGatewayPage.lastScannedText);
+            //myApp.alert(scanGatewayPage.lastScannedText);
+
+            var newGateway = JSON.parse(scanGatewayPage.lastScannedText);
+
+            newGateway.status = 'Active';
+
+
+            //make sure this Gateway isn't already in the list
+            var inList = false;
+
+            globals.gatewayList.forEach(function (gateway,index) {
+                if(gateway.deviceId === newGateway.deviceId){
+                    //it's already there
+                    inList = true;
+                }
+            });
+
+            if (inList){
+                myApp.alert('This Gateway has already been scanned and is already in the Gateway List','Existing Gateway');
+            }
+            else {
+                globals.gatewayList.push(newGateway);
+            }
+
         }
-
-
 
         mainView.router.load({url: 'pages/gateway.html'});
 
@@ -152,8 +187,13 @@ var scanGatewayPage = {
     cancelScan: function () {
         scanGatewayPage.lastScannedText = '';
         scanGatewayPage.finishScan();
-    }
+    },
 
+    //******************************************************************************************************************
+    fakeScan: function () {
+        scanGatewayPage.lastScannedText = '{"wsURL":"1234","deviceId":"gateway1","name":"Bobs Room","accountId":"500","gatewayIP":"192.168.0.1"}';
+        scanGatewayPage.finishScan();
+    }
 
 
     //******************************************************************************************************************
