@@ -26,7 +26,7 @@ var mainView = myApp.addView('.view-main', {
 myApp.hideToolbar($$('#gatewayToolbar'));
 
 //get any saved custom gateway information
-var customGatewayInfo = myApp.formGetData('customGatewayForm');
+/*var customGatewayInfo = myApp.formGetData('customGatewayForm');
 if (customGatewayInfo){
     globals.customTestGateway.baseURL= customGatewayInfo.customGatewayBaseURL;
     globals.customTestGateway.url= customGatewayInfo.customGatewayURL;
@@ -37,28 +37,23 @@ if (customGatewayInfo){
     globals.customTestGateway.wsURL= customGatewayInfo.customGatewayWsURL;
     globals.customTestGateway.deviceID= customGatewayInfo.customGatewayDeviceID;
     globals.customTestGateway.portNum= customGatewayInfo.customGatewayPortNum;
+}*/
+
+// get the list of stored gateways
+globals.gatewayList = myApp.formGetData('gatewayList');
+if (!globals.gatewayList){
+    globals.gatewayList = [];
 }
 
-
-
+// get any stored selected gateway info
 globals.selectedGateway = myApp.formGetData('selectedGateway');
 
 setTimeout(function(){
 
-    //check to see if a Gateway has previously been selected
-    /*    if (globals.selectedGateway){
-            mainView.router.load({url: 'pages/player.html', animatePages: false});
-
-        }
-        else {
-            //a gateway has never been selected, or was previously cleared.
-            mainView.router.load({url: 'pages/gateway.html', animatePages: false});
-
-        }*/
-
     //hide the initializing div
     $$('#initializingCard').hide();
 
+    indexPage.displayGateway();
 
 }, 1000);
 
@@ -168,6 +163,7 @@ function remoteClick(event){
         myApp.hideToolbar($$('#gatewayScannerToolbar'));
         myApp.showToolbar($$('#mainToolbar'));
 
+        indexPage.displayGateway();
 
 
     });
@@ -182,7 +178,18 @@ function remoteClick(event){
 
 var indexPage = {
 
+    displayGateway: function () {
+        //check to see if a Gateway has previously been selected
+        if (globals.selectedGateway){
+            $('#connectedGatewayLabel').html('You are connected to: ' + globals.selectedGateway.name);
 
+        }
+        else {
+            //a gateway has never been selected, or was previously cleared.
+            $('#connectedGatewayLabel').html('You are not connected to a Gateway<br>Please tap the Gateway icon below to get connected');
+
+        }
+    }
 
 
 

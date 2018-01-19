@@ -5,8 +5,7 @@
 myApp.onPageInit('gateway', function (page) {
 
     //Events to watch
-    $$(document).on('click', '.gateway', gatewayPage.gatewayClicked);
-    $$(document).on('click', '#clearGatewayBTN', gatewayPage.clearGatewayClicked);
+    /*$$(document).on('click', '.gateway', gatewayPage.gatewayClicked);*/
 
 
 
@@ -15,12 +14,8 @@ myApp.onPageInit('gateway', function (page) {
 myApp.onPageBeforeRemove('gateway', function (page) {
 
     //clean up event watchers
-    $$(document).off('click', '.gateway', gatewayPage.gatewayClicked);
-    $$(document).off('click', '#clearGatewayBTN', gatewayPage.clearGatewayClicked);
-    $$(document).off('click', '#customGatewayBTN', gatewayPage.customGatewayClicked);
+    /*$$(document).off('click', '.gateway', gatewayPage.gatewayClicked);*/
 
-    //hide the toolbar
-    myApp.hideToolbar($$('#gatewayToolbar'));
 
 });
 
@@ -33,8 +28,6 @@ myApp.onPageAfterAnimation('gateway', function (page) {
 });
 
 myApp.onPageBeforeAnimation('gateway', function (page) {
-
-
 
     //show the toolbar
     myApp.showToolbar($$('#gatewayToolbar'));
@@ -78,12 +71,23 @@ var gatewayPage = {
         if(globals.selectedGateway){
             //set the selectedGateway global with the selected gateway
             globals.gatewayList.forEach(function (gateway,index) {
-                if(gateway.name === globals.selectedGateway.name){
+                if(gateway.deviceId === globals.selectedGateway.deviceId){
                     globals.gatewayList[index].status = 'Connected';
                     $$('#clearGatewayBTN').removeClass('disabled');
                 }
+                else {
+                    globals.gatewayList[index].status = 'Active';
+                }
             });
         }
+        else {
+            //clear the Connected state for all the gateways
+            globals.gatewayList.forEach(function (gateway,index) {
+                globals.gatewayList[index].status = 'Active';
+            });
+        }
+        //and store the list on the device
+        myApp.formStoreData('gatewayList', globals.gatewayList);
 
         //{"wsURL":"1234","deviceId":"gateway1","name":"Bobs Room","accountId":"500","gatewayIP":"192.168.0.1"}
 
@@ -91,14 +95,43 @@ var gatewayPage = {
 
         globals.gatewayList.forEach(function (gateway) {
 
-            gatewayListHTML +=      '<li>';
+/*            gatewayListHTML +=      '<li>';
 
-            if(gateway.status === 'Active'){
-                gatewayListHTML +=          '<a href="#" class="gateway activeGateway item-link item-content" data-gatewayName="'+ gateway.name +'"  >';
+
+            switch(gateway.status) {
+                case 'Connected':
+                    gatewayListHTML +=          '<a href="#" class="gateway item-content" data-gatewayDeviceId="'+ gateway.deviceId +'"  >';
+                    gatewayListHTML +=              '<div class="item-media"><img src="images/connected_gateway.png" width="200"></div>';
+                    break;
+                case 'Active':
+                    gatewayListHTML +=          '<a href="#" class="gateway  item-link item-content" data-gatewayDeviceId="'+ gateway.deviceId +'"  >';
+                    gatewayListHTML +=              '<div class="item-media"><img src="images/active_gateway.png" width="200"></div>';
+                    break;
+                default:
+                //no default code
             }
-            else{
-                gatewayListHTML +=          '<a href="#" class="gateway item-content" data-gatewayName="'+ gateway.name +'"  >';
-            }
+
+            gatewayListHTML +=              '<div class="item-inner" >';
+
+            //gatewayListHTML +=                  '<div class="item-title-row">';
+            gatewayListHTML +=                      '<div class="item-title">NAME: '+ gateway.name +'</div>';
+            //gatewayListHTML +=                  '</div>';
+            gatewayListHTML +=                  '<div class="item-subtitle">wsURL: '+ gateway.wsURL +'</div>';
+            gatewayListHTML +=                  '<div class="item-subtitle">deviceId: '+ gateway.deviceId +'</div>';
+            gatewayListHTML +=                  '<div class="item-subtitle">accountId: '+ gateway.accountId +'</div>';
+            gatewayListHTML +=                  '<div class="item-subtitle">gatewayIP: '+ gateway.gatewayIP +'</div>';
+            gatewayListHTML +=                  '<div class="item-after">Another label</div>';
+
+            gatewayListHTML +=              '</div>';
+
+
+            gatewayListHTML +=          '</a>';
+            gatewayListHTML +=      '</li>';*/
+
+
+
+
+            gatewayListHTML +=      '<li class="item-content">';
 
             switch(gateway.status) {
                 case 'Connected':
@@ -107,33 +140,56 @@ var gatewayPage = {
                 case 'Active':
                     gatewayListHTML +=              '<div class="item-media"><img src="images/active_gateway.png" width="200"></div>';
                     break;
-                case 'Inactive':
-                    gatewayListHTML +=              '<div class="item-media"><img src="images/inactive_gateway.png" width="200"></div>';
+                default:
+                //no default code
+            }
+
+
+            gatewayListHTML +=          '<div class="item-inner">';
+
+            gatewayListHTML +=          '<div class="row" style="width: 100%">';
+
+
+            switch(gateway.status) {
+                case 'Connected':
+                    gatewayListHTML +=              '<div class="col-60" style="font-weight: bold; color: white">';
+                    break;
+                case 'Active':
+                    gatewayListHTML +=              '<div class="col-70">';
                     break;
                 default:
                 //no default code
             }
 
 
-            if (gateway.status === 'Inactive'){
-                gatewayListHTML +=              '<div class="item-inner inactive-gateway">';
-            }
-            else {
-                gatewayListHTML +=              '<div class="item-inner">';
-            }
-
-
-
-            gatewayListHTML +=                  '<div class="item-title-row">';
-            gatewayListHTML +=                      '<div class="item-title">NAME: '+ gateway.name +'</div>';
-            gatewayListHTML +=                  '</div>';
+            gatewayListHTML +=                  '<div class="item-title">NAME: '+ gateway.name +'</div>';
             gatewayListHTML +=                  '<div class="item-subtitle">wsURL: '+ gateway.wsURL +'</div>';
             gatewayListHTML +=                  '<div class="item-subtitle">deviceId: '+ gateway.deviceId +'</div>';
             gatewayListHTML +=                  '<div class="item-subtitle">accountId: '+ gateway.accountId +'</div>';
             gatewayListHTML +=                  '<div class="item-subtitle">gatewayIP: '+ gateway.gatewayIP +'</div>';
             gatewayListHTML +=              '</div>';
-            gatewayListHTML +=          '</a>';
+            gatewayListHTML +=              '<div class="col-30"><br>';
+
+            switch(gateway.status) {
+                case 'Connected':
+                    gatewayListHTML +=                  '<div><a class="button"  href="#" onclick="gatewayPage.disconnectGateway()"><i class="fas fa-unlink"></i>&nbsp;&nbsp;Disconnect</a></div>';
+                    break;
+                case 'Active':
+                    gatewayListHTML +=                  '<div><a class="button"  href="#" onclick="gatewayPage.connectGateway(&#39;' + gateway.deviceId + '&#39;)"><i class="fas fa-link"></i>&nbsp;&nbsp;Connect</a></div>';
+                    gatewayListHTML +=                  '<div><a class="button mt-10"  href="#" onclick="gatewayPage.deleteGateway(&#39;' + gateway.deviceId + '&#39;)"><i class="far fa-times-circle"></i>&nbsp;&nbsp;Delete</a></div>';
+                    break;
+                default:
+                //no default code
+            }
+
+
+            gatewayListHTML +=              '</div>';
+            gatewayListHTML +=          '</div> ';
+
+            gatewayListHTML +=          '</div>';
             gatewayListHTML +=      '</li>';
+
+
 
         });
 
@@ -150,58 +206,43 @@ var gatewayPage = {
     },
 
     //******************************************************************************************************************
-    gatewayClicked: function (e) {
-        //var theTarget = $$(this).data("gatewayName");
-        //console.log('gateway Name= '+ $$(this).data("gatewayName"));
-
-        var self = this;
+    connectGateway: function (deviceId) {
 
         //hide the toolbar
         myApp.hideToolbar($$('#gatewayToolbar'));
 
-        //see if they clicked on the Custom Gateway
-/*        if($$(self).data("gatewayName") === globals.customTestGateway.name){
-            mainView.router.load({url: 'pages/customGateway.html'});
-            return;
-        }*/
-
         //set the selectedGateway global with the selected gateway
-        //TODO: selected gateway should be based off of deviceID and not name.
 
         globals.gatewayList.forEach(function (gateway,index) {
-            if(gateway.name === $$(self).data("gatewayName")){
+            if(gateway.deviceId === deviceId){
                 globals.selectedGateway = gateway;
                 globals.gatewayList[index].status = 'Connected';
 
                 //and store it on the device
                 myApp.formStoreData('selectedGateway', gateway);
 
-
             }
             else{
-                //mark any previously connected Gateway as Active, not Connected
-                if (gateway.status === 'Connected'){
-                    globals.gatewayList[index].status = 'Active';
-                }
+                //mark all other Gateways as Active
+                globals.gatewayList[index].status = 'Active';
             }
         });
 
-
-
+        //and store the list on the device
+        myApp.formStoreData('gatewayList', globals.gatewayList);
 
         //navigate to the Player page
         mainView.router.load({url: 'index.html'});
 
-
-
     },
 
     //******************************************************************************************************************
-    clearGatewayClicked: function () {
+    disconnectGateway: function () {
 
         globals.selectedGateway = null;
         //and store it on the device
         myApp.formStoreData('selectedGateway', null);
+
         //remove the connected status
         globals.gatewayList.forEach(function (gateway,index) {
             if (gateway.status === 'Connected'){
@@ -209,16 +250,33 @@ var gatewayPage = {
             }
         });
 
-
         //re-render the gateway list
         gatewayPage.renderGatewayList();
 
     },
 
     //******************************************************************************************************************
-    customGatewayClicked: function () {
-        //TODO
-        myApp.alert("The Custom Gateway functionality is not implimented yet.", 'Sorry!');
+    deleteGateway: function (deviceId) {
+
+        globals.gatewayList.forEach(function (gateway,index) {
+            if(gateway.deviceId === deviceId){
+
+                myApp.confirm('Are you sure you want to delete ' + gateway.name + '?', 'Confirm Delete', function () {
+
+                    globals.gatewayList.splice(index, 1);
+
+                    //and store the list on the device
+                    myApp.formStoreData('gatewayList', globals.gatewayList);
+
+                    //re-render the gateway list
+                    gatewayPage.renderGatewayList();
+
+                });
+
+            }
+
+        });
+
     }
 
     //******************************************************************************************************************

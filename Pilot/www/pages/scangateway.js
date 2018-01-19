@@ -174,7 +174,12 @@ var scanGatewayPage = {
                 myApp.alert('This Gateway has already been scanned and is already in the Gateway List','Existing Gateway');
             }
             else {
+                //add it to the list of gateways
                 globals.gatewayList.push(newGateway);
+
+                //and store the list on the device
+                myApp.formStoreData('gatewayList', globals.gatewayList);
+
             }
 
         }
@@ -191,7 +196,10 @@ var scanGatewayPage = {
 
     //******************************************************************************************************************
     fakeScan: function () {
-        scanGatewayPage.lastScannedText = '{"wsURL":"1234","deviceId":"gateway1","name":"Bobs Room","accountId":"500","gatewayIP":"192.168.0.1"}';
+
+        var deviceId = cobaltfireUtils.guid().substr(0,4);
+
+        scanGatewayPage.lastScannedText = '{"wsURL":"1234","deviceId":"' + deviceId + '","name":"Bobs Room ' + deviceId + '","accountId":"500","gatewayIP":"192.168.0.1"}';
         scanGatewayPage.finishScan();
     }
 
