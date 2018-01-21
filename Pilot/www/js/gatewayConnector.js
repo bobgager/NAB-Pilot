@@ -3,6 +3,7 @@ var gatewayConnector = {
 
     ws: null,
 
+    //******************************************************************************************************************
     sendKeystroke: function (keyStroke, device) {
 
         var JSONobject = { device: device, data: { keyCharacter: keyStroke }};
@@ -20,6 +21,31 @@ var gatewayConnector = {
 
         }
 
+    },
+
+    //******************************************************************************************************************
+    connectToGateway: function (gateway,callback) {
+
+        //build the full websocket URL
+
+        globals.wsURL =  'ws://' + gateway.gatewayIP + gateway.wsURL ;
+
+        var JSONobject = { key: 'pairCompanion', data: { geolocation: '32.7254,-97.3208' }};
+
+        if (globals.isBrowser){
+
+            gatewayConnector.logToSimulatedGateway(JSON.stringify(JSONobject));
+
+        }
+
+        else {
+
+            gatewayConnector.sendWebSocket(JSON.stringify(JSONobject));
+
+        }
+
+
+        callback(true, gateway, 'TestError');
     },
 
     //******************************************************************************************************************
@@ -73,5 +99,7 @@ var gatewayConnector = {
         }
 
     }
+
+    //******************************************************************************************************************
 
 };

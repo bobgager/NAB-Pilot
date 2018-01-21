@@ -199,7 +199,7 @@ var scanGatewayPage = {
 
         var deviceId = cobaltfireUtils.guid().substr(0,4);
 
-        scanGatewayPage.lastScannedText = '{"wsURL":"1234","deviceId":"' + deviceId + '","name":"Bobs Room ' + deviceId + '","accountId":"500","gatewayIP":"192.168.0.1"}';
+        scanGatewayPage.lastScannedText = '{"wsURL":"","deviceId":"' + deviceId + '","name":"Bobs Room ' + deviceId + '","accountId":"500","gatewayIP":"echo.websocket.org"}';
         scanGatewayPage.finishScan();
     }
 

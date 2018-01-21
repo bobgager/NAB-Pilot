@@ -182,39 +182,62 @@ var gatewayPage = {
                 //no default code
             }
 
-
             gatewayListHTML +=              '</div>';
             gatewayListHTML +=          '</div> ';
 
             gatewayListHTML +=          '</div>';
             gatewayListHTML +=      '</li>';
 
-
-
         });
-
 
         gatewayListHTML +=  '<ul>';
 
-
-
-
         $$('#gatewayList').html(gatewayListHTML);
-
-
 
     },
 
     //******************************************************************************************************************
     connectGateway: function (deviceId) {
 
-        //hide the toolbar
-        myApp.hideToolbar($$('#gatewayToolbar'));
+        var theGateway = null;
 
-        //set the selectedGateway global with the selected gateway
+        //clear any previously connected gateway
+        globals.selectedGateway = null;
+        //and clear it on the device
+        myApp.formStoreData('selectedGateway', null);
+
+        //get the gateway object
+        globals.gatewayList.forEach(function (gateway,index) {
+
+            //mark all  Gateways as Active
+            globals.gatewayList[index].status = 'Active';
+
+            //capture the gaateway that was clickedx`
+            if(gateway.deviceId === deviceId){
+                theGateway = gateway;
+            }
+
+        });
+
+        gatewayConnector.connectToGateway(theGateway, gatewayPage.connectionCallback);
+
+    },
+
+    //******************************************************************************************************************
+    connectionCallback: function (success, connectedGateway, err) {
+
+        if (!success){
+            //we failed to connect properly
+            myApp.alert('Gateway connection failed.<br>' + err, 'Connection Error');
+            gatewayPage.refreshPage();
+            return;
+        }
+
+
+        //set the selectedGateway global with the connected gateway
 
         globals.gatewayList.forEach(function (gateway,index) {
-            if(gateway.deviceId === deviceId){
+            if(gateway.deviceId === connectedGateway.deviceId){
                 globals.selectedGateway = gateway;
                 globals.gatewayList[index].status = 'Connected';
 
@@ -222,17 +245,14 @@ var gatewayPage = {
                 myApp.formStoreData('selectedGateway', gateway);
 
             }
-            else{
-                //mark all other Gateways as Active
-                globals.gatewayList[index].status = 'Active';
-            }
         });
 
         //and store the list on the device
         myApp.formStoreData('gatewayList', globals.gatewayList);
 
-        //navigate to the Player page
+        //navigate to the Home page
         mainView.router.load({url: 'index.html'});
+
 
     },
 
