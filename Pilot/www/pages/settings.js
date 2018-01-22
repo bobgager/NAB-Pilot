@@ -7,7 +7,6 @@ myApp.onPageInit('settings', function (page) {
 
     //Events to watch
     $$(document).on('click', '#update_BTN', settingsPage.updateApplication);
-    $$(document).on('change', '#skinSelector', settingsPage.skinSelectorChange);
 
     //update the version number in the UI
     $$('#versionDisplay').html(globals.presentableVersion);
@@ -31,40 +30,19 @@ myApp.onPageBeforeAnimation('settings', function (page) {
         $$('#gatewayNameLabel').html('Please select a Gateway');
     }
 
-    //set the useSimulatedGatewaySwitch checkbox
+    //set the gatewaySimulatorIDLabel
     $$('#gatewaySimulatorIDLabel').html('gatewaySimulatorID: ' + globals.gatewaySimulatorID);
+
+    //hide all the toolbars
+    myApp.hideToolbar($$('#gatewayToolbar'));
+    myApp.hideToolbar($$('#gatewayScannerToolbar'));
+    myApp.hideToolbar($$('#mainToolbar'));
 
 });
 
 
 
 var settingsPage = {
-
-    //******************************************************************************************************************
-/*    setUseSimulatedGateway: function () {
-        if ($('#useSimulatedGatewaySwitch').is(":checked")) {
-            // it is checked
-            globals.useSimulatedGateway = true;
-        }
-        else {
-            globals.useSimulatedGateway = false;
-        }
-    },*/
-
-    //******************************************************************************************************************
-    skinSelectorChange: function () {
-        if ($$('#skinSelector').is(':checked')){
-            //console.log('skinSelector.val() = on');
-            globals.skinStyle = 'OzNet';
-        }
-        else{
-            //console.log('skinSelector.val() = off');
-            globals.skinStyle = 'pilot';
-        }
-
-        setSkin();
-
-    },
 
     //******************************************************************************************************************
     updateApplication: function () {

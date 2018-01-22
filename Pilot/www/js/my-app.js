@@ -13,6 +13,8 @@ if(myApp.device.os){
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
 
+
+
 });
 
 setSkin();
@@ -69,19 +71,10 @@ setTimeout(function(){
     $$(document).on('click', '.keyboard-button', keyboardClick);
     $$(document).on('click', '.remote-button', remoteClick);
 
+
+
     function keyboardClick(event){
 
-        //play a click sound
-        var sound = new Howl({
-            src: [
-                'sounds/lock-button-1.mp3',
-                'sounds/lock-button-1.ogg'
-            ],
-            volume: 0.9,
-            rate: 8
-        });
-
-        sound.play();
 
         //get the data-value attribute
         var value = $(event.target).closest('button').data('value');
@@ -113,18 +106,6 @@ setTimeout(function(){
         gatewayConnector.sendKeystroke(value, "keyboard");
     }
 function remoteClick(event){
-
-    //play a click sound
-    var sound = new Howl({
-        src: [
-            'sounds/lock-button-1.mp3',
-            'sounds/lock-button-1.ogg'
-        ],
-        volume: 0.9,
-        rate: 8
-    });
-
-    sound.play();
 
     //get the data-value attribute
     var value = $(event.target).closest('button').data('value');

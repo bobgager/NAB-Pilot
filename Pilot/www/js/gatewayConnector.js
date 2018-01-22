@@ -28,7 +28,14 @@ var gatewayConnector = {
 
         //build the full websocket URL
 
-        globals.wsURL =  'ws://' + gateway.gatewayIP + gateway.wsURL ;
+        if (gateway.gatewayIP === 'cobaltfire.com'){
+            //we're using the gateway simulator
+            globals.wsURL =  'ws://echo.websocket.org'
+        }
+        else {
+            //we're using a real gateway
+            globals.wsURL =  'ws://' + gateway.gatewayIP + gateway.wsURL ;
+        }
 
         var JSONobject = { key: 'pairCompanion', data: { geolocation: '32.7254,-97.3208' }};
 

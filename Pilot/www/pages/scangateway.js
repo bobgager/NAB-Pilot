@@ -152,8 +152,6 @@ var scanGatewayPage = {
         myApp.showToolbar($$('#gatewayToolbar'));
 
         if (scanGatewayPage.lastScannedText !== ''){
-            //display the contents of the QR code:
-            //myApp.alert(scanGatewayPage.lastScannedText);
 
             var newGateway = JSON.parse(scanGatewayPage.lastScannedText);
 
@@ -189,7 +187,7 @@ var scanGatewayPage = {
 
         }
 
-        mainView.router.load({url: 'pages/gateway.html'});
+        mainView.router.load({url: 'pages/gateway.html?deviceId=' + newGateway.deviceId});
 
     },
 

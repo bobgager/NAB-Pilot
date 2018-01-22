@@ -23,6 +23,10 @@ myApp.onPageAfterAnimation('gateway', function (page) {
 
     gatewayPage.refreshPage();
 
+    //automatically connect if page was passed a deviceId
+    if(page.query.deviceId){
+        gatewayPage.connectGateway(page.query.deviceId);
+    }
 
 
 });
