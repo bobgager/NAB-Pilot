@@ -57,7 +57,7 @@ var gatewayConnector = {
             packet: packetString
         };
 
-        awsConnector.saveNotification(globals.gatewayID, notificationObject, gatewayConnector.SG_notificationSent)
+        awsConnector.saveNotification(globals.gatewaySimulatorID, notificationObject, gatewayConnector.SG_notificationSent)
 
     },
 

@@ -159,6 +159,11 @@ var scanGatewayPage = {
 
             newGateway.status = 'Active';
 
+            //if it's a simulated gateway, store the deviceID
+            if (newGateway.gatewayIP === 'cobaltfire.com'){
+                globals.gatewaySimulatorID = newGateway.deviceId;
+            }
+
 
             //make sure this Gateway isn't already in the list
             var inList = false;

@@ -32,7 +32,7 @@ myApp.onPageBeforeAnimation('settings', function (page) {
     }
 
     //set the useSimulatedGatewaySwitch checkbox
-    $$('#useSimulatedGatewaySwitch').prop('checked', globals.useSimulatedGateway);
+    $$('#gatewaySimulatorIDLabel').html('gatewaySimulatorID: ' + globals.gatewaySimulatorID);
 
 });
 
@@ -74,6 +74,17 @@ var settingsPage = {
         else{
             var ref = cordova.InAppBrowser.open('https://build.phonegap.com/apps/2424474/install/7AQ5kwxk6awKgpE7QWAV', '_system');
         }
+    },
+
+    //******************************************************************************************************************
+    setSimulatedGatewayID: function () {
+
+        myApp.prompt('Please enter the deviceId shown on the Simulated gateway', 'Simulated Gateway Device ID', function (value) {
+            globals.gatewaySimulatorID = value;
+            //set the useSimulatedGatewaySwitch checkbox
+            $$('#gatewaySimulatorIDLabel').html('gatewaySimulatorID: ' + globals.gatewaySimulatorID);
+        });
+
     }
 
     //******************************************************************************************************************

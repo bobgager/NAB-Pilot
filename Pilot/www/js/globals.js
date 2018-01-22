@@ -25,7 +25,7 @@ var globals = {
         status: 'Active'
     },
 
-    gatewayID: '1234',
+    gatewaySimulatorID: 'not set',
 
     gatewayList: [],
 
