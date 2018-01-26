@@ -4,32 +4,21 @@ var globals = {
 
     inDevelopment: true,
 
-    version: 0.0211,
-    presentableVersion: "0.2.11",
+    version: 0.0213,
+    presentableVersion: "0.2.13",
 
-    codeDate: '1/22/2018',
+    codeDate: '1/25/2018',
 
-
-
-    customTestGateway: {
-        name: 'Customizable Test Gateway',
-        baseURL: 'http://cobaltfire.com/demo/pilot/bunny.html',
-        url: null,
-        player: 'inappbrowser',
-        ipAddress: null,
-        isPC: null,
-        isFourK: null,
-        wsURL: null,
-        deviceID: null,
-        portNum: null,
-        status: 'Active'
-    },
 
     gatewaySimulatorID: 'not set',
 
     gatewayList: [],
 
     isBrowser: true,
+
+    latitude: null,
+
+    longitude: null,
 
     selectedGateway: null,
 

@@ -37,7 +37,9 @@ var gatewayConnector = {
             globals.wsURL =  'ws://' + gateway.gatewayIP + gateway.wsURL ;
         }
 
-        var JSONobject = { key: 'pairCompanion', data: { geolocation: '32.7254,-97.3208' }};
+        var latlonString = globals.latitude + ',' + globals.longitude;
+
+        var JSONobject = { key: 'pairCompanion', data: { geolocation: latlonString }};
 
         if (globals.isBrowser){
 

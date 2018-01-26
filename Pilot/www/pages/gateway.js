@@ -48,7 +48,20 @@ var gatewayPage = {
 
         gatewayPage.renderGatewayList();
 
+        if (globals.isBrowser){
+            globals.latitude =  '0';
+            globals.longitude = '0';
+        }
+
+        //if for some reason we don't have geolocation info, let's try to get it again
+        if (!globals.latitude){
+            console.log('about to call geolocation in gateway page refresh');
+            cordova.plugins.locationServices.geolocation.getCurrentPosition(geoSuccess, geoError);
+        }
+
     },
+
+
 
     //******************************************************************************************************************
     renderGatewayList: function () {
@@ -216,7 +229,7 @@ var gatewayPage = {
             //mark all  Gateways as Active
             globals.gatewayList[index].status = 'Active';
 
-            //capture the gaateway that was clickedx`
+            //capture the gateway that was clicked
             if(gateway.deviceId === deviceId){
                 theGateway = gateway;
             }

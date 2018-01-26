@@ -72,6 +72,16 @@ var aboutPage = {
 
         dynamicInfo += "<br>The Pixel Ratio of your "+ deviceType + "'s screen is: " + device.pixelRatio;
 
+
+        if (!globals.longitude){
+            dynamicInfo += "<br>Your Longitude/Latitude has not been determined yet."
+        }
+        else {
+            dynamicInfo += "<br>Your Longitude is: " + globals.longitude;
+            dynamicInfo += "<br>Your Latitude is: " + globals.latitude;
+        }
+
+
         if (deviceType === 'Browser'){
             $$('#dynamicPilotInfo').html(dynamicInfo);
             return;
@@ -82,6 +92,7 @@ var aboutPage = {
             dynamicInfo += "<br>The IP Address of your "+ deviceType + " is: " + ip;
             aboutPage.showDynamicInfo2(dynamicInfo, deviceType)
         });
+
 
     },
 

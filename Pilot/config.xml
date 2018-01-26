@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.cobaltfire.pilot" version="0.2.11" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.cobaltfire.pilot" version="0.2.13" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Pilot</name>
     <description>
         Companion App for Pilot Gateway
@@ -33,6 +33,8 @@
     <plugin name="cordova-plugin-statusbar" spec="1.0.1" />
     <plugin name="cordova-plugin-streaming-media" spec="1.0.2" />
     <plugin name="cordova-plugin-whitelist" spec="1.2.2" />
+<!--    <plugin name="cordova-plugin-geolocation" spec="4.0.1" />-->
+    <plugin name="cordova-plugin-locationservices" spec="2.1.0" />
 
 <!--    <plugin name="cordova-plugin-zeroconf" spec="1.2.1" />-->
 

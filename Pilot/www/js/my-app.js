@@ -10,10 +10,43 @@ if(myApp.device.os){
     globals.isBrowser = false;
 }
 
+
+
+//******************************************************************************************************************
+function geoSuccess(position) {
+
+    //myApp.alert('geoSuccess');
+    console.log('geoSuccess');
+    console.log(position);
+
+    globals.latitude =  position.coords.latitude;
+    globals.longitude = position.coords.longitude;
+
+    /*alert('Latitude: '          + position.coords.latitude          + '\n' +
+        'Longitude: '         + position.coords.longitude         + '\n' +
+        'Altitude: '          + position.coords.altitude          + '\n' +
+        'Accuracy: '          + position.coords.accuracy          + '\n' +
+        'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+        'Heading: '           + position.coords.heading           + '\n' +
+        'Speed: '             + position.coords.speed             + '\n' +
+        'Timestamp: '         + position.timestamp                + '\n');*/
+
+}
+
+//******************************************************************************************************************
+function geoError(error) {
+    //myApp.alert('geolocation error: code: '    + error.code    + 'message: ' + error.message );
+    console.log('geolocation error: code: '    + error.code    + 'message: ' + error.message );
+    //try again
+    cordova.plugins.locationServices.geolocation.getCurrentPosition(geoSuccess, geoError);
+}
+
+//******************************************************************************************************************
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
 
-
+    console.log('about to call geolocation in deviceReady');
+    cordova.plugins.locationServices.geolocation.getCurrentPosition(geoSuccess, geoError);
 
 });
 
@@ -26,20 +59,6 @@ var mainView = myApp.addView('.view-main', {
 });
 
 myApp.hideToolbar($$('#gatewayToolbar'));
-
-//get any saved custom gateway information
-/*var customGatewayInfo = myApp.formGetData('customGatewayForm');
-if (customGatewayInfo){
-    globals.customTestGateway.baseURL= customGatewayInfo.customGatewayBaseURL;
-    globals.customTestGateway.url= customGatewayInfo.customGatewayURL;
-    globals.customTestGateway.player= customGatewayInfo.customGatewayPlayerType;
-    globals.customTestGateway.ipAddress= customGatewayInfo.customGatewayIpAddress;
-    globals.customTestGateway.isPC= customGatewayInfo.customGatewayIsPC;
-    globals.customTestGateway.isFourK= customGatewayInfo.customGatewayIsFourK;
-    globals.customTestGateway.wsURL= customGatewayInfo.customGatewayWsURL;
-    globals.customTestGateway.deviceID= customGatewayInfo.customGatewayDeviceID;
-    globals.customTestGateway.portNum= customGatewayInfo.customGatewayPortNum;
-}*/
 
 // get the list of stored gateways
 globals.gatewayList = myApp.formGetData('gatewayList');
@@ -105,28 +124,28 @@ setTimeout(function(){
 
         gatewayConnector.sendKeystroke(value, "keyboard");
     }
-function remoteClick(event){
+    function remoteClick(event){
 
-    //get the data-value attribute
-    var value = $(event.target).closest('button').data('value');
+        //get the data-value attribute
+        var value = $(event.target).closest('button').data('value');
 
-    //get the focus off the tapped key
-    $('.ui-keyboard-button').blur();
+        //get the focus off the tapped key
+        $('.ui-keyboard-button').blur();
 
-    //visually show a click
-    $(event.target).closest('button').addClass('ui-keyboard-clicked');
-    setTimeout(function () {
-        $(event.target).closest('button').removeClass('ui-keyboard-clicked');
-    }, 200);
+        //visually show a click
+        $(event.target).closest('button').addClass('ui-keyboard-clicked');
+        setTimeout(function () {
+            $(event.target).closest('button').removeClass('ui-keyboard-clicked');
+        }, 200);
 
-    //if it's the Close key, close the keyboard popup
-    if (value === 'Close'){
-        myApp.closeModal()
-        return;
+        //if it's the Close key, close the keyboard popup
+        if (value === 'Close'){
+            myApp.closeModal()
+            return;
+        }
+
+        gatewayConnector.sendKeystroke(value, "remote");
     }
-
-    gatewayConnector.sendKeystroke(value, "remote");
-}
 
     function resetToolbar() {
         //$$('#tb_keyboard').removeClass('disabled');
