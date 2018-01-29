@@ -158,7 +158,7 @@ var scanGatewayPage = {
             newGateway.status = 'Active';
 
             //if it's a simulated gateway, store the deviceID
-            if (newGateway.gatewayIP === 'cobaltfire.com'){
+            if (newGateway.gatewayIP.indexOf('cobaltfire.com') !== -1){
                 globals.gatewaySimulatorID = newGateway.deviceId;
             }
 
@@ -202,7 +202,7 @@ var scanGatewayPage = {
 
         var deviceId = cobaltfireUtils.guid().substr(0,4);
 
-        scanGatewayPage.lastScannedText = '{"wsURL":"","deviceId":"' + deviceId + '","name":"Bobs Room ' + deviceId + '","accountId":"500","gatewayIP":"echo.websocket.org"}';
+        scanGatewayPage.lastScannedText = '{"wsURL":"/gateway/","deviceId":"' + deviceId + '","name":"Simulated Gateway ' + deviceId + '","accountId":"500","gatewayIP":"cobaltfire.com/demo/pilot"}';
         scanGatewayPage.finishScan();
     }
 

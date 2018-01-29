@@ -4,11 +4,19 @@ var globals = {
 
     inDevelopment: true,
 
-    version: 0.0213,
-    presentableVersion: "0.2.13",
+    version: 0.0214,
+    presentableVersion: "0.2.14",
 
-    codeDate: '1/25/2018',
+    codeDate: '1/28/2018',
 
+
+    deviceID: cobaltfireUtils.guid().substr(0,4),
+
+    deviceName: null,
+
+    deviceType: 'Tablet',
+
+    displayCapabilities: 'HD',
 
     gatewaySimulatorID: 'not set',
 
@@ -23,6 +31,8 @@ var globals = {
     selectedGateway: null,
 
     skinStyle: 'pilot',
+
+    WatchTVAppURL: '/watchtv.html',
 
     wsURL: 'ws://echo.websocket.org'
 

@@ -28,7 +28,7 @@ var gatewayConnector = {
 
         //build the full websocket URL
 
-        if (gateway.gatewayIP === 'cobaltfire.com'){
+        if (gateway.gatewayIP.indexOf('cobaltfire.com') !== -1){
             //we're using the gateway simulator
             globals.wsURL =  'ws://echo.websocket.org'
         }

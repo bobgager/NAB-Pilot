@@ -20,7 +20,12 @@
 
             <div class="card">
                 <div class="card-content">
-                    <div class="card-content-inner">This will be the WatchTV App at some point</div>
+                    <div id="urlLabel"  class="card-content-inner">http://cobaltfire.com/demo/pilot/bunny.html</div>
+                </div>
+                <div class="card-footer">
+                    <div></div>
+                    <a href="#" class="button" style="width: 200px" onclick="watchTVPage.theURL = $('#urlLabel').html() ; watchTVPage.playContent(watchTVPage.theURL)">Launch WatchTV</a>
+                    <div></div>
                 </div>
             </div>
 

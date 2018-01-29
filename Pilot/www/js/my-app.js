@@ -48,6 +48,9 @@ $$(document).on('deviceready', function() {
     console.log('about to call geolocation in deviceReady');
     cordova.plugins.locationServices.geolocation.getCurrentPosition(geoSuccess, geoError);
 
+    //grab the UUID of the device
+    globals.deviceID = device.uuid;
+
 });
 
 setSkin();
@@ -68,6 +71,12 @@ if (!globals.gatewayList){
 
 // get any stored selected gateway info
 globals.selectedGateway = myApp.formGetData('selectedGateway');
+
+// get the stored deviceName
+globals.deviceName = myApp.formGetData('deviceName');
+if (!globals.deviceName){
+    globals.deviceName = 'Pilot Companion';
+}
 
 setTimeout(function(){
 
