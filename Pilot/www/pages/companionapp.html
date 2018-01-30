@@ -20,7 +20,12 @@
 
             <div class="card">
                 <div class="card-content">
-                    <div class="card-content-inner">The Companion Device App will go here at some point</div>
+                    <div id="caURLLabel" class="card-content-inner">The Companion Device App will go here at some point</div>
+                </div>
+                <div class="card-footer">
+                    <div></div>
+                    <a href="#" class="button" style="width: 200px" onclick="companionAppPage.theURL = $('#caURLLabel').html() ; companionAppPage.playContent(companionAppPage.theURL)">Launch Companion App</a>
+                    <div></div>
                 </div>
             </div>
 

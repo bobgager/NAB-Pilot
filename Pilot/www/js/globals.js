@@ -9,6 +9,9 @@ var globals = {
 
     codeDate: '1/28/2018',
 
+    BroadcasterAppURL: '/broadcast.html',
+
+    CompanionAppURL: '/companion.html',
 
     deviceID: cobaltfireUtils.guid().substr(0,4),
 

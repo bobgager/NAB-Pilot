@@ -7,8 +7,10 @@ myApp.onPageInit('settings', function (page) {
     //Events to watch
     $$(document).on('click', '#update_BTN', settingsPage.updateApplication);
     $$(document).on('keyup', '#WatchTVAppURLInput', settingsPage.updateWatchTVURL);
+    $$(document).on('keyup', '#BroadcasterAppURLInput', settingsPage.updateBroadcasterAppURL);
+    $$(document).on('keyup', '#CompanionAppURLInput', settingsPage.updateCompanionAppURL);
     $$(document).on('keyup', '#companionDeviceNameInput', settingsPage.updateDeviceName);
-    $$(document).on('click', '.displaySwitch', settingsPage.updateDisplayCapability);
+    //$$(document).on('click', '.displaySwitch', settingsPage.updateDisplayCapability);
 
     //update the version number in the UI
     $$('#versionDisplay').html(globals.presentableVersion);
@@ -20,8 +22,10 @@ myApp.onPageBeforeRemove('settings', function (page) {
     //clean up event watchers
     $$(document).off('click', '#update_BTN', settingsPage.updateApplication);
     $$(document).off('keyup', '#WatchTVAppURLInput', settingsPage.updateWatchTVURL);
+    $$(document).off('keyup', '#BroadcasterAppURLInput', settingsPage.updateBroadcasterAppURL);
+    $$(document).off('keyup', '#CompanionAppURLInput', settingsPage.updateCompanionAppURL);
     $$(document).off('keyup', '#companionDeviceNameInput', settingsPage.updateDeviceName);
-    $$(document).off('click', '.displaySwitch', settingsPage.updateDisplayCapability);
+    //$$(document).off('click', '.displaySwitch', settingsPage.updateDisplayCapability);
 
 });
 
@@ -62,8 +66,10 @@ myApp.onPageBeforeAnimation('settings', function (page) {
             $('#HDRSwitch').prop('checked', false);
     }
 
-    //set the value of the WatchTVURL input
+    //set the value of the various app URL inputs
     $('#WatchTVAppURLInput').val(globals.WatchTVAppURL);
+    $('#BroadcasterAppURLInput').val(globals.BroadcasterAppURL);
+    $('#CompanionAppURLInput').val(globals.CompanionAppURL);
 
     //hide all the toolbars
     myApp.hideToolbar($$('#gatewayToolbar'));
@@ -77,11 +83,12 @@ myApp.onPageBeforeAnimation('settings', function (page) {
 var settingsPage = {
 
     //******************************************************************************************************************
-    updateDisplayCapability: function (e) {
+    updateDisplayCapability: function (theSwitch) {
 
         //var target = e.target.id;
+        //myApp.alert(theSwitch);
 
-        switch(e.target.id) {
+        switch(theSwitch) {
             case 'HDSwitch':
                 globals.displayCapabilities = 'HD';
                 $('#HDSwitch').prop('checked', true);
@@ -120,6 +127,20 @@ var settingsPage = {
     updateWatchTVURL: function (e) {
 
         globals.WatchTVAppURL = $('#WatchTVAppURLInput').val();
+
+    },
+
+    //******************************************************************************************************************
+    updateBroadcasterAppURL: function (e) {
+
+        globals.BroadcasterAppURL = $('#BroadcasterAppURLInput').val();
+
+    },
+
+    //******************************************************************************************************************
+    updateCompanionAppURL: function (e) {
+
+        globals.CompanionAppURL = $('#CompanionAppURLInput').val();
 
     },
 

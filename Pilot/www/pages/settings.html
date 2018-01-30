@@ -74,26 +74,26 @@
                             <div class="item-inner">
                                 <div class="item-title label">Display:</div>
 
-                                <div class="item-input" style="text-align: right; width: 10%">HD:&nbsp;</div>
+                                <div class="item-input" style="text-align: right; ">HD:&nbsp;</div>
                                 <div class="item-input">
                                     <label class="label-switch">
-                                        <input id="HDSwitch" type="checkbox" class="displaySwitch">
+                                        <input id="HDSwitch" type="checkbox" class="displaySwitch" onchange="settingsPage.updateDisplayCapability('HDSwitch')" >
                                         <div class="checkbox"></div>
                                     </label>
                                 </div>
 
-                                <div class="item-input" style="text-align: right">4K:&nbsp;</div>
+                                <div class="item-input" style="text-align: right; ">4K:&nbsp;</div>
                                 <div class="item-input">
                                     <label class="label-switch">
-                                        <input id="4KSwitch" type="checkbox" class="displaySwitch">
+                                        <input id="4KSwitch" type="checkbox" class="displaySwitch" onchange="settingsPage.updateDisplayCapability('4KSwitch')" >
                                         <div class="checkbox"></div>
                                     </label>
                                 </div>
 
-                                <div class="item-input" style="text-align: right">HDR:&nbsp;</div>
+                                <div class="item-input" style="text-align: right; ">HDR:&nbsp;</div>
                                 <div class="item-input">
                                     <label class="label-switch">
-                                        <input id="HDRSwitch" type="checkbox"  class="displaySwitch" >
+                                        <input id="HDRSwitch" type="checkbox"  class="displaySwitch" onchange="settingsPage.updateDisplayCapability('HDRSwitch')" >
                                         <div class="checkbox"></div>
                                     </label>
                                 </div>
@@ -107,7 +107,29 @@
                             <div class="item-inner">
                                 <div class="item-title label">WatchTV URL:</div>
                                 <div class="item-input">
-                                    <input id="WatchTVAppURLInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Enter WatchTVAppURL">
+                                    <input id="WatchTVAppURLInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Enter WatchTVApp URL">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">Broadcaster App URL:</div>
+                                <div class="item-input">
+                                    <input id="BroadcasterAppURLInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Enter BroadcasterApp URL">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">Companion App URL:</div>
+                                <div class="item-input">
+                                    <input id="CompanionAppURLInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Enter CompanionApp URL">
                                 </div>
                             </div>
                         </div>
